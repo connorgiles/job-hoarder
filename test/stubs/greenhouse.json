@@ -1,0 +1,135 @@
+{
+  "jobsResponse": {
+    "jobs": [{
+      "id": 127817,
+      "internal_job_id": 144381,
+      "title": "Bad Cop",
+      "updated_at": "2016-01-14T10:55:28-05:00",
+      "requisition_id": "50",
+      "location": {
+        "name": "NYC"
+      },
+      "absolute_url": "https://boards.greenhouse.io/vaulttec/jobs/127817",
+      "metadata": null,
+      "content": "&lt;p&gt;The Rule Enforcement team is dedicated to keeping all employees in line. &amp;nbsp;Rule enforcers use&amp;nbsp;various tactics such as physical intimidation, awkward pauses, and dramatic coffee sips in order to make sure everyone does what they&#39;re told.",
+      "departments": [{
+          "id": 13583,
+          "name": "Department of Departments",
+          "parent_id": null,
+          "child_ids": [
+            13585
+          ]
+        },
+        {
+          "id": 13585,
+          "name": "Rule Enforcement",
+          "parent_id": 13583,
+          "child_ids": []
+        }
+      ],
+      "offices": [{
+          "id": 8304,
+          "name": "East Coast",
+          "location": "United States",
+          "parent_id": null,
+          "child_ids": [
+            8787
+          ]
+        },
+        {
+          "id": 8787,
+          "name": "New York City",
+          "location": "New York, NY, United States",
+          "parent_id": 8304,
+          "child_ids": []
+        }
+      ]
+    }],
+    "meta": {
+      "total": 1
+    }
+  },
+
+  "jobsParsed": [{
+    "id": 127817,
+    "title": "Bad Cop",
+    "datePosted": 1452786928000,
+    "jobLocation": "NYC",
+    "url": "https://boards.greenhouse.io/vaulttec/jobs/127817",
+    "description": "<p>The Rule Enforcement team is dedicated to keeping all employees in line. &nbsp;Rule enforcers use&nbsp;various tactics such as physical intimidation, awkward pauses, and dramatic coffee sips in order to make sure everyone does what they're told.",
+    "department": "Department of Departments, Rule Enforcement",
+    "offices": [{
+        "name": "East Coast",
+        "location": "United States"
+      },
+      {
+        "name": "New York City",
+        "location": "New York, NY, United States"
+      }
+    ]
+  }],
+
+  "jobResponse": {
+    "id": 127817,
+    "internal_job_id": 144381,
+    "title": "Bad Cop",
+    "updated_at": "2016-01-14T10:55:28-05:00",
+    "requisition_id": "50",
+    "location": {
+      "name": "NYC"
+    },
+    "absolute_url": "https://boards.greenhouse.io/vaulttec/jobs/127817",
+    "metadata": null,
+    "content": "&lt;p&gt;The Rule Enforcement team is dedicated to keeping all employees in line. &amp;nbsp;Rule enforcers use&amp;nbsp;various tactics such as physical intimidation, awkward pauses, and dramatic coffee sips in order to make sure everyone does what they&#39;re told.",
+    "departments": [{
+        "id": 13583,
+        "name": "Department of Departments",
+        "parent_id": null,
+        "child_ids": [
+          13585
+        ]
+      },
+      {
+        "id": 13585,
+        "name": "Rule Enforcement",
+        "parent_id": 13583,
+        "child_ids": []
+      }
+    ],
+    "offices": [{
+        "id": 8304,
+        "name": "East Coast",
+        "location": "United States",
+        "parent_id": null,
+        "child_ids": [
+          8787
+        ]
+      },
+      {
+        "id": 8787,
+        "name": "New York City",
+        "location": "New York, NY, United States",
+        "parent_id": 8304,
+        "child_ids": []
+      }
+    ]
+  },
+  "jobParsed": {
+    "id": 127817,
+    "title": "Bad Cop",
+    "datePosted": 1452786928000,
+    "jobLocation": "NYC",
+    "url": "https://boards.greenhouse.io/vaulttec/jobs/127817",
+    "description": "<p>The Rule Enforcement team is dedicated to keeping all employees in line. &nbsp;Rule enforcers use&nbsp;various tactics such as physical intimidation, awkward pauses, and dramatic coffee sips in order to make sure everyone does what they're told.",
+    "department": "Department of Departments, Rule Enforcement",
+    "offices": [{
+        "name": "East Coast",
+        "location": "United States"
+      },
+      {
+        "name": "New York City",
+        "location": "New York, NY, United States"
+      }
+    ]
+  }
+}
