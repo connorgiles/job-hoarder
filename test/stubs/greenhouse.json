@@ -51,22 +51,13 @@
   },
 
   "jobsParsed": [{
-    "id": 127817,
+    "id": "127817",
     "title": "Bad Cop",
     "datePosted": 1452786928000,
     "jobLocation": "NYC",
     "url": "https://boards.greenhouse.io/vaulttec/jobs/127817",
     "description": "<p>The Rule Enforcement team is dedicated to keeping all employees in line. &nbsp;Rule enforcers use&nbsp;various tactics such as physical intimidation, awkward pauses, and dramatic coffee sips in order to make sure everyone does what they're told.",
-    "department": "Department of Departments, Rule Enforcement",
-    "offices": [{
-        "name": "East Coast",
-        "location": "United States"
-      },
-      {
-        "name": "New York City",
-        "location": "New York, NY, United States"
-      }
-    ]
+    "department": "Department of Departments, Rule Enforcement"
   }],
 
   "jobResponse": {
@@ -115,21 +106,12 @@
     ]
   },
   "jobParsed": {
-    "id": 127817,
+    "id": "127817",
     "title": "Bad Cop",
     "datePosted": 1452786928000,
     "jobLocation": "NYC",
     "url": "https://boards.greenhouse.io/vaulttec/jobs/127817",
     "description": "<p>The Rule Enforcement team is dedicated to keeping all employees in line. &nbsp;Rule enforcers use&nbsp;various tactics such as physical intimidation, awkward pauses, and dramatic coffee sips in order to make sure everyone does what they're told.",
-    "department": "Department of Departments, Rule Enforcement",
-    "offices": [{
-        "name": "East Coast",
-        "location": "United States"
-      },
-      {
-        "name": "New York City",
-        "location": "New York, NY, United States"
-      }
-    ]
+    "department": "Department of Departments, Rule Enforcement"
   }
 }

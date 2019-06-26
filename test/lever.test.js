@@ -3,7 +3,7 @@ const expect = require('chai').expect;
 const should = require('chai').should();
 const nock = require('nock');
 
-const ATS_NAME = 'greenhouse';
+const ATS_NAME = 'lever';
 const ATS = require('../lib/ats/' + ATS_NAME);
 const parser = require('../lib/ats/' + ATS_NAME + '/parser');
 
@@ -24,8 +24,8 @@ describe(ATS_NAME, function () {
       const testCompanyId = 'test';
       const testJobId = testData.jobResponse.id;
 
-      nock('https://boards-api.greenhouse.io')
-        .get(`/v1/boards/${testCompanyId}/jobs/${testJobId}`)
+      nock('https://api.lever.co')
+        .get(`/v0/postings/${testCompanyId}/${testJobId}`)
         .reply(200, JSON.stringify(testData.jobResponse));
 
       const client = new ATS(testCompanyId);
@@ -36,8 +36,8 @@ describe(ATS_NAME, function () {
     it('should retrieve valid jobs list', async function () {
       const testCompanyId = 'test';
 
-      nock('https://boards-api.greenhouse.io')
-        .get(`/v1/boards/${testCompanyId}/jobs?content=true`)
+      nock('https://api.lever.co')
+        .get(`/v0/postings/${testCompanyId}?mode=json`)
         .reply(200, JSON.stringify(testData.jobsResponse));
 
       const client = new ATS(testCompanyId);
