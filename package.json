@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "coverage": "nyc mocha"
+    "coverage": "nyc mocha",
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "author": "Connor Giles",
   "license": "ISC",
@@ -16,7 +17,9 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "coveralls": "^3.0.4",
     "mocha": "^6.1.4",
+    "mocha-lcov-reporter": "^1.3.0",
     "nock": "^10.0.6",
     "nyc": "^14.1.1"
   }
