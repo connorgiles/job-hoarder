@@ -1,6 +1,6 @@
-const Greenhouse = require('./lib/ats/greenhouse');
-const Lever = require('./lib/ats/lever');
-const JazzAPI = require('./lib/ats/jazzAPI');
+const Greenhouse = require('./lib/greenhouse');
+const Lever = require('./lib/lever');
+const JazzAPI = require('./lib/jazzAPI');
 
 module.exports = {
   Greenhouse,

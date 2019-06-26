@@ -4,8 +4,8 @@ const should = require('chai').should();
 const nock = require('nock');
 
 const ATS_NAME = 'jazzAPI';
-const ATS = require('../lib/ats/' + ATS_NAME);
-const parser = require('../lib/ats/' + ATS_NAME + '/parser')('test');
+const ATS = require('../lib/' + ATS_NAME);
+const parser = require('../lib/' + ATS_NAME + '/parser')('test');
 
 const testData = require('./stubs').loadStubs(ATS_NAME);
 
