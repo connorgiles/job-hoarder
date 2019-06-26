@@ -7,7 +7,7 @@ const ATS_NAME = 'lever';
 const ATS = require('../lib/ats/' + ATS_NAME);
 const parser = require('../lib/ats/' + ATS_NAME + '/parser');
 
-const testData = require('./stubs/' + ATS_NAME);
+const testData = require('./stubs').loadStubs(ATS_NAME);
 
 describe(ATS_NAME, function () {
 
@@ -20,27 +20,24 @@ describe(ATS_NAME, function () {
   });
 
   describe('client', function () {
-    it('should retrieve valid job', async function () {
-      const testCompanyId = 'test';
-      const testJobId = testData.jobResponse.id;
+    const testCompanyId = 'test';
+    const testJobId = testData.jobResponse.id;
+    const client = new ATS(testCompanyId);
 
+    it('should retrieve valid job', async function () {
       nock('https://api.lever.co')
         .get(`/v0/postings/${testCompanyId}/${testJobId}`)
         .reply(200, JSON.stringify(testData.jobResponse));
 
-      const client = new ATS(testCompanyId);
       const job = await client.getJob(testJobId);
       expect(testData.jobParsed).to.deep.equal(job);
     });
 
     it('should retrieve valid jobs list', async function () {
-      const testCompanyId = 'test';
-
       nock('https://api.lever.co')
         .get(`/v0/postings/${testCompanyId}?mode=json`)
         .reply(200, JSON.stringify(testData.jobsResponse));
 
-      const client = new ATS(testCompanyId);
       const jobs = await client.getJobs();
       expect(testData.jobsParsed).to.deep.equal(jobs);
     });
@@ -84,10 +81,6 @@ describe(ATS_NAME, function () {
 
       it('should not parse nothing', function () {
         should.Throw(() => parser.parseJobs(), Error);
-      });
-
-      it('should not parse empty', function () {
-        should.Throw(() => parser.parseJobs({}), Error);
       });
 
       it('should not parse null', function () {
