@@ -4,8 +4,7 @@
   "description": "Job board aggregator to pull in standardized job postings from company job pages",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "coverage": "nyc mocha",
+    "test": "nyc mocha",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "Connor Giles",
