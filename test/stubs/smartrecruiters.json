@@ -1,0 +1,190 @@
+{
+  "jobsResponse": {
+    "offset": 0,
+    "limit": 100,
+    "totalFound": 383,
+    "content": [{
+      "id": "743999690953317",
+      "name": "Équipier à temps partiel - Cinéma Cineplex Capitol St-Jean",
+      "uuid": "82acf09c-a54b-4f9f-afdb-21cae64dda14",
+      "refNumber": "REF2509G",
+      "company": {
+        "identifier": "Cineplex",
+        "name": "Cineplex"
+      },
+      "releasedDate": "2019-06-28T19:41:05.000Z",
+      "location": {
+        "city": "Saint-Jean-sur-Richelieu",
+        "region": "QC",
+        "country": "ca",
+        "address": "286 Rue Richelieu"
+      },
+      "industry": {
+        "id": "entertainment",
+        "label": "Entertainment"
+      },
+      "department": {
+        "id": "1073608",
+        "label": "Cinéma Capitol St-Jean"
+      },
+      "function": {
+        "id": "customer_service",
+        "label": "Customer Service"
+      },
+      "typeOfEmployment": {
+        "label": "Part-time"
+      },
+      "experienceLevel": {
+        "id": "entry_level",
+        "label": "Entry Level"
+      },
+      "customField": [{
+          "fieldId": "COUNTRY",
+          "fieldLabel": "Country",
+          "valueId": "ca",
+          "valueLabel": "Canada"
+        },
+        {
+          "fieldId": "5aea8325b60a5e498c0e2a7f",
+          "fieldLabel": "Screening Question Set",
+          "valueId": "f902f6d8-3d6d-41c6-a1a1-a8e230785f18",
+          "valueLabel": "Theatre Ops Cast Quebec French"
+        },
+        {
+          "fieldId": "5a26a868b60a5e20ef9bc1a2",
+          "fieldLabel": "Brands",
+          "valueId": "f6cccd54-7ce1-4ff1-a9b7-469d7454a757",
+          "valueLabel": "Theatre Ops"
+        },
+        {
+          "fieldId": "5a26a868b60a5e20ef9bc1a3",
+          "fieldLabel": "Department",
+          "valueId": "1073608",
+          "valueLabel": "Cinéma Capitol St-Jean"
+        }
+      ],
+      "ref": "https://api.smartrecruiters.com/api-v1/companies/TEST/postings/743999690953317",
+      "creator": {
+        "name": "Cineplex Jobs"
+      },
+      "language": {
+        "code": "fr-CA",
+        "label": "French (Canada)",
+        "labelNative": "français (Canada)"
+      }
+    }]
+  },
+
+  "jobsParsed": [{
+    "id": "743999690953317",
+    "title": "Équipier à temps partiel - Cinéma Cineplex Capitol St-Jean",
+    "datePosted": "2019-06-28T19:41:05.000Z",
+    "jobLocation": "Saint-Jean-sur-Richelieu, QC, CA",
+    "language": "fr-CA",
+    "url": "https://jobs.smartrecruiters.com/TEST/743999690953317",
+    "description": null,
+    "department": "Cinéma Capitol St-Jean"
+  }],
+
+  "jobResponse": {
+    "id": "743999690953317",
+    "name": "Équipier à temps partiel - Cinéma Cineplex Capitol St-Jean",
+    "uuid": "82acf09c-a54b-4f9f-afdb-21cae64dda14",
+    "refNumber": "REF2509G",
+    "company": {
+      "name": "Cineplex",
+      "identifier": "Cineplex"
+    },
+    "location": {
+      "city": "Saint-Jean-sur-Richelieu",
+      "region": "QC",
+      "country": "ca",
+      "address": "286 Rue Richelieu"
+    },
+    "industry": {
+      "id": "entertainment",
+      "label": "Entertainment"
+    },
+    "customField": [{
+        "fieldId": "COUNTRY",
+        "fieldLabel": "Country",
+        "valueId": "ca",
+        "valueLabel": "Canada"
+      },
+      {
+        "fieldId": "5aea8325b60a5e498c0e2a7f",
+        "fieldLabel": "Screening Question Set",
+        "valueId": "f902f6d8-3d6d-41c6-a1a1-a8e230785f18",
+        "valueLabel": "Theatre Ops Cast Quebec French"
+      },
+      {
+        "fieldId": "5a26a868b60a5e20ef9bc1a2",
+        "fieldLabel": "Brands",
+        "valueId": "f6cccd54-7ce1-4ff1-a9b7-469d7454a757",
+        "valueLabel": "Theatre Ops"
+      },
+      {
+        "fieldId": "5a26a868b60a5e20ef9bc1a3",
+        "fieldLabel": "Department",
+        "valueId": "1073608",
+        "valueLabel": "Cinéma Capitol St-Jean"
+      }
+    ],
+    "creator": {
+      "name": "Cineplex Jobs",
+      "avatarUrl": ""
+    },
+    "applyUrl": "https://jobs.smartrecruiters.com/TEST/743999690953317-equipier-a-temps-partiel-cinema-cineplex-capitol-st-jean?oga=true",
+    "jobAd": {
+      "sections": {
+        "companyDescription": {
+          "title": "Description de l'entreprise",
+          "text": "<p>Cineplex (TSX : CGX) est une marque canadienne de premier plan dont les activités se concentrent dans les domaines du cinéma et du contenu filmé, du divertissement et des loisirs, ainsi que des médias. Chef de file dans le secteur du divertissement et des médias, Cineplex accueille plus de 70 millions d’invités dans son réseau de cinémas et de destinations de restauration et de divertissement répartis d’un océan à l’autre. Cineplex exploite en outre des entreprises à succès dans le secteur du commerce numérique (CineplexStore.com), du service alimentaire, de la programmation complémentaire (Événements Cineplex), des médias cinématographiques (Cineplex Média), des médias numériques fixes (Cineplex Média numérique), des solutions de divertissement (Player One Amusement Group), de même qu’une plateforme de sports électronique destinée aux joueurs passionnés dotés d’un esprit de compétition (WorldGaming Network). L’entreprise exploite aussi la toute nouvelle destination de restauration et de divertissement de choix au pays (The Rec Room), et ouvrira en outre de nouveaux complexes conçus spécialement pour les adolescents et les familles (Playdium), de même que des complexes de sport et de divertissement (Topgolf) dans tout le Canada. Cineplex est partenaire en coentreprise de SCÈNE, le plus important programme de récompenses axé sur le divertissement au Canada.</p><p>Fière d’être reconnue comme possédant l’une des cultures d’entreprise les plus admirées au Canada, Cineplex emploie environ 13 000 personnes dans ses bureaux canadiens et américains. Pour en apprendre davantage, consultez <a href=\"https://www.cineplex.com/\">Cineplex.com</a> ou téléchargez l&apos;application Cineplex.</p>"
+        },
+        "jobDescription": {
+          "title": "Description du poste",
+          "text": "<p>Nous comptons sur nos équipiers pour fournir à nos invités une expérience de divertissement exceptionnelle. L’atmosphère chez Cineplex est énergique, excitante et positive.  </p><p>Nous sommes actuellement à la recherche d’employés pour pourvoir des postes à temps partiel dans ce cinéma. Si vous avez une passion pour le cinéma et que vous aimez travailler avec le public, nous avons des possibilités d’emploi parfaites pour vous. S’il s’agit de l’occasion que vous recherchiez, n’attendez pas! Postulez pour un emploi dès aujourd’hui!</p>"
+        },
+        "qualifications": {
+          "title": "Qualifications",
+          "text": "<p>Quelles sont les qualités requises pour faire partie de l’équipe de Cineplex?</p><ul><li>Vous aimez le travail d’équipe.</li><li>Vous êtes dynamique. Vous êtes accueillant  et sociable.</li><li>Vous aimez travailler dans un milieu axé sur le service aux invités où les activités se déroulent à un rythme rapide.</li><li>Vous êtes disponible à travailler tard les week-ends et certaines soirées en semaine.</li><li>ous possédez des aptitudes supérieures à communiquer. Les candidats retenus pourront profiter de films gratuits, d’un salaire concurrentiel, d’heures flexibles, d’aide en matière de frais de scolarité et de programmes de primes salariales.</li></ul>"
+        },
+        "additionalInformation": {
+          "title": "Renseignements complémentaires",
+          "text": "<p>Les candidats retenus pourront voir des films gratuitement, en plus de profiter d’un salaire concurrentiel, de programmes de formation complets et d’une aide financière aux études. Si vous aimez le cinéma et le travail avec le public, cette occasion s’adresse à vous. N’attendez pas plus longtemps! Posez votre candidature aujourd’hui!</p><p><strong>Nous apprécions tout intérêt manifesté pour cette offre d’emploi, mais nous ne communiquerons qu’avec les candidats convoqués à une entrevue.</strong></p><p>LANG: FR</p>"
+        }
+      }
+    },
+    "function": {
+      "id": "customer_service",
+      "label": "Customer Service"
+    },
+    "department": {
+      "id": 1073608,
+      "label": "Cinéma Capitol St-Jean"
+    },
+    "experienceLevel": {
+      "id": "entry_level",
+      "label": "Entry Level"
+    },
+    "typeOfEmployment": {
+      "id": "part-time",
+      "label": "Part-time"
+    },
+    "language": {
+      "code": "fr-CA",
+      "label": "French (Canada)",
+      "labelNative": "français (Canada)"
+    }
+  },
+  "jobParsed": {
+    "id": "743999690953317",
+    "title": "Équipier à temps partiel - Cinéma Cineplex Capitol St-Jean",
+    "datePosted": null,
+    "jobLocation": "Saint-Jean-sur-Richelieu, QC, CA",
+    "language": "fr-CA",
+    "url": "https://jobs.smartrecruiters.com/TEST/743999690953317-equipier-a-temps-partiel-cinema-cineplex-capitol-st-jean?oga=true",
+    "description": "<h3>Description de l'entreprise</h3><p>Cineplex (TSX : CGX) est une marque canadienne de premier plan dont les activités se concentrent dans les domaines du cinéma et du contenu filmé, du divertissement et des loisirs, ainsi que des médias. Chef de file dans le secteur du divertissement et des médias, Cineplex accueille plus de 70 millions d’invités dans son réseau de cinémas et de destinations de restauration et de divertissement répartis d’un océan à l’autre. Cineplex exploite en outre des entreprises à succès dans le secteur du commerce numérique (CineplexStore.com), du service alimentaire, de la programmation complémentaire (Événements Cineplex), des médias cinématographiques (Cineplex Média), des médias numériques fixes (Cineplex Média numérique), des solutions de divertissement (Player One Amusement Group), de même qu’une plateforme de sports électronique destinée aux joueurs passionnés dotés d’un esprit de compétition (WorldGaming Network). L’entreprise exploite aussi la toute nouvelle destination de restauration et de divertissement de choix au pays (The Rec Room), et ouvrira en outre de nouveaux complexes conçus spécialement pour les adolescents et les familles (Playdium), de même que des complexes de sport et de divertissement (Topgolf) dans tout le Canada. Cineplex est partenaire en coentreprise de SCÈNE, le plus important programme de récompenses axé sur le divertissement au Canada.</p><p>Fière d’être reconnue comme possédant l’une des cultures d’entreprise les plus admirées au Canada, Cineplex emploie environ 13 000 personnes dans ses bureaux canadiens et américains. Pour en apprendre davantage, consultez <a href=\"https://www.cineplex.com/\">Cineplex.com</a> ou téléchargez l&apos;application Cineplex.</p><h3>Description du poste</h3><p>Nous comptons sur nos équipiers pour fournir à nos invités une expérience de divertissement exceptionnelle. L’atmosphère chez Cineplex est énergique, excitante et positive.  </p><p>Nous sommes actuellement à la recherche d’employés pour pourvoir des postes à temps partiel dans ce cinéma. Si vous avez une passion pour le cinéma et que vous aimez travailler avec le public, nous avons des possibilités d’emploi parfaites pour vous. S’il s’agit de l’occasion que vous recherchiez, n’attendez pas! Postulez pour un emploi dès aujourd’hui!</p><h3>Qualifications</h3><p>Quelles sont les qualités requises pour faire partie de l’équipe de Cineplex?</p><ul><li>Vous aimez le travail d’équipe.</li><li>Vous êtes dynamique. Vous êtes accueillant  et sociable.</li><li>Vous aimez travailler dans un milieu axé sur le service aux invités où les activités se déroulent à un rythme rapide.</li><li>Vous êtes disponible à travailler tard les week-ends et certaines soirées en semaine.</li><li>ous possédez des aptitudes supérieures à communiquer. Les candidats retenus pourront profiter de films gratuits, d’un salaire concurrentiel, d’heures flexibles, d’aide en matière de frais de scolarité et de programmes de primes salariales.</li></ul><h3>Renseignements complémentaires</h3><p>Les candidats retenus pourront voir des films gratuitement, en plus de profiter d’un salaire concurrentiel, de programmes de formation complets et d’une aide financière aux études. Si vous aimez le cinéma et le travail avec le public, cette occasion s’adresse à vous. N’attendez pas plus longtemps! Posez votre candidature aujourd’hui!</p><p><strong>Nous apprécions tout intérêt manifesté pour cette offre d’emploi, mais nous ne communiquerons qu’avec les candidats convoqués à une entrevue.</strong></p><p>LANG: FR</p>",
+    "department": "Cinéma Capitol St-Jean"
+  }
+}
