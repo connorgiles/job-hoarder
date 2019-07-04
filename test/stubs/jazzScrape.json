@@ -1,0 +1,146 @@
+{
+  "jobsResponsePage": "./pages/jazzScrapeList.html",
+
+  "jobsParsed": [
+    {
+      "id": "K3CE94iWzh",
+      "url": "http://tedconferencesllc.applytojob.com/apply/K3CE94iWzh/Contract-Technical-Production",
+      "datePosted": null,
+      "jobLocation": "North Vancouver, British Columbia, Canada",
+      "department": "Conferences - Vancouver",
+      "description": null
+    },
+    {
+      "id": "9rEDWDJ0oG",
+      "url": "http://tedconferencesllc.applytojob.com/apply/9rEDWDJ0oG/Research-Director",
+      "datePosted": null,
+      "jobLocation": "New York, NY",
+      "department": "Curation",
+      "description": null
+    },
+    {
+      "id": "qpykVhVbTF",
+      "url": "http://tedconferencesllc.applytojob.com/apply/qpykVhVbTF/Associate-Editorial-Producer-TEDcom",
+      "datePosted": null,
+      "jobLocation": "New York, NY",
+      "department": "Editorial",
+      "description": null
+    },
+    {
+      "id": "S0MxzFR6Xl",
+      "url": "http://tedconferencesllc.applytojob.com/apply/S0MxzFR6Xl/Director-Corporate-Strategy-Sales-LD",
+      "datePosted": null,
+      "jobLocation": "New York, NY",
+      "department": "Global Distribution & Licensing",
+      "description": null
+    },
+    {
+      "id": "ULg4zcIsap",
+      "url": "http://tedconferencesllc.applytojob.com/apply/ULg4zcIsap/Audio-Partnerships-Manager",
+      "datePosted": null,
+      "jobLocation": "New York, NY",
+      "department": "Media - Distribution",
+      "description": null
+    },
+    {
+      "id": "ecXi05QTfQ",
+      "url": "http://tedconferencesllc.applytojob.com/apply/ecXi05QTfQ/Coordinator-TED-TV-The-Audacious-Project",
+      "datePosted": null,
+      "jobLocation": "New York, NY",
+      "department": "Multiple Teams",
+      "description": null
+    },
+    {
+      "id": "BM2dJXvWmL",
+      "url": "http://tedconferencesllc.applytojob.com/apply/BM2dJXvWmL/Creative-Account-Manager",
+      "datePosted": null,
+      "jobLocation": "New York, NY",
+      "department": "Partnerships",
+      "description": null
+    },
+    {
+      "id": "PKpOBP2OXV",
+      "url": "http://tedconferencesllc.applytojob.com/apply/PKpOBP2OXV/Digital-Operations-Senior-AssociateManager",
+      "datePosted": null,
+      "jobLocation": "New York, NY",
+      "department": "Partnerships",
+      "description": null
+    },
+    {
+      "id": "S49vWz53Gq",
+      "url": "http://tedconferencesllc.applytojob.com/apply/S49vWz53Gq/Partnership-Associate",
+      "datePosted": null,
+      "jobLocation": "New York City, NY",
+      "department": "Partnerships",
+      "description": null
+    },
+    {
+      "id": "xAckjN53fu",
+      "url": "http://tedconferencesllc.applytojob.com/apply/xAckjN53fu/Backend-Engineer",
+      "datePosted": null,
+      "jobLocation": "United States",
+      "department": "Technology",
+      "description": null
+    },
+    {
+      "id": "fvFd6vux4J",
+      "url": "http://tedconferencesllc.applytojob.com/apply/fvFd6vux4J/Senior-FrontEnd-Engineer",
+      "datePosted": null,
+      "jobLocation": "United States",
+      "department": "Technology",
+      "description": null
+    },
+    {
+      "id": "4iBJwv7zCr",
+      "url": "http://tedconferencesllc.applytojob.com/apply/4iBJwv7zCr/Associate-AudioVideo-Engineer",
+      "datePosted": null,
+      "jobLocation": "New York, NY",
+      "department": "TED World Theater",
+      "description": null
+    },
+    {
+      "id": "T2FQY24Bjk",
+      "url": "http://tedconferencesllc.applytojob.com/apply/T2FQY24Bjk/Salesforce-Development-Manager",
+      "datePosted": null,
+      "jobLocation": "United States",
+      "department": "TEDx",
+      "description": null
+    },
+    {
+      "id": "c2bXHGcsop",
+      "url": "http://tedconferencesllc.applytojob.com/apply/c2bXHGcsop/TEDx-Licensing-Coordinator",
+      "datePosted": null,
+      "jobLocation": "New York, NY",
+      "department": "TEDx",
+      "description": null
+    },
+    {
+      "id": "TVPM28ym9T",
+      "url": "http://tedconferencesllc.applytojob.com/apply/TVPM28ym9T/TEDx-Licensing-Intern",
+      "datePosted": null,
+      "jobLocation": "New York, NY",
+      "department": "TEDx",
+      "description": null
+    },
+    {
+      "id": "mVgD8ETWbc",
+      "url": "http://tedconferencesllc.applytojob.com/apply/mVgD8ETWbc/TEDx-Media-Intern",
+      "datePosted": null,
+      "jobLocation": "New York, NY",
+      "department": "TEDx",
+      "description": null
+    }
+  ],
+
+  "jobResponsePage": "./pages/jazzScrapeJob.html",
+  
+  "jobParsed": {
+    "id": "K3CE94iWzh",
+    "url": "https://tedconferencesllc.applytojob.com/apply/K3CE94iWzh/Contract-Technical-Production",
+    "title": "Contract Technical Production",
+    "datePosted": "2019-06-10T00:00:00.000Z",
+    "jobLocation": "North Vancouver, British Columbia",
+    "department": "Conferences - Vancouver",
+    "description": "<p>The Contract Technical Production role works amongst a project-based technical work group who oversees the production, planning, execution, and logistics for our conferences and events. The audio and visual elements are essential to creating an unforgettable show for those in the live audience and watching on livestream.</p><p>The desired candidate is someone with experience in stage production, design, audio, video, lighting, camera, crewing, communication, and a wide variety of auxiliary tasks. Applicants would benefit from having an understanding of live theater production or broadcast.</p><p>Applicants must also have a knack for complex problem solving, data organization, critical thinking and clear communication. As an organization, we are always growing and striving to improve, so the ability to adapt and a willingness to learn on the job are important assets.</p><p><strong>QUALIFICATIONS / SKILLS</strong></p><ul><li>Degree or diploma in a project management, technical field, or a related discipline (preferred)</li><li>3+ years experience working large scale live productions and events</li><li>Excellent verbal and written communication skills</li><li>Strong professionalism that can be personalized to a wide variety of vendors, stakeholders, colleagues and crew</li><li>An eye for finding efficiencies in workflows and processes, and the ability to communicate them clearly to colleagues and management</li><li>An aptitude for working in deadline-oriented and fast-paced environments</li><li>Works well under pressure and can work on multiple projects simultaneously</li><li>Ability to follow instructions to complete complex tasks</li><li>Event planning or management experience is an asset</li><li>Budget management is essential to understanding the big picture of an event</li><li>Ability to travel internationally if required</li></ul><p><strong>RESPONSIBILITIES</strong></p><ul><li>Technical production: Coordinate and execute the technical production aspects of all events and conferences, including: audio, visual, camera, lighting and livestream</li><li>Technical requirements: Research, source, and order production and technical equipment, speaker and performer requirements, stage design elements, and gear required for conferences</li><li>Vendor management: Assist with all aspects of vendor relationships, including the RFP and contracting processes, quality control, order changes, invoicing, and day-to-day communications</li><li>Procurement: Source and negotiate supplier contracts, coordinate orders from multiple stakeholders, partners, and clients</li><li>Budget management: Development, maintenance, reporting and reconciliation</li><li>Crewing: Assist with hiring crew and personnel for events, including: contracting, negotiation, travel logistics, lodging and invoicing</li><li>Logistics: Plan and execute installation and strike schedules, production schedules and meetings and onsite technical crew needs</li><li>Stakeholder management: Interface with stakeholders to facilitate technical and operational needs</li><li>Onsite execution: Work with technical specialists, engineers, building operations and security to ensure successful onsite execution</li><li>Critical path: Strict adherence to project timelines and deliverables</li><li>Process: Discipline of internal policies and procedures</li><li>Communications: Prepare and edit documents and contracts, meeting minutes, internal and external correspondence, and presentations while adhering to branding and identity guidelines</li><li>Administrative: Data entry, document management, meeting planning, and other administrative tasks</li><li>Willingness to contribute however possible to ensure the overall effectiveness of the project</li></ul><p><strong>WORKPLACE CONDITIONS</strong></p><ul><li>General: Open office environment</li><li>Physical: Repetitive movement of wrists, hands, and/or fingers</li><li>Mental/Visual: Concentrated mental and/or visual attention; work involves performing tasks quickly and accurately</li><li>Equipment/Software: Ability to use common office equipment such as telephones, computers, copiers, and common computer programs for both Mac and PC (MS Office, Keynote, and functional related databases). An understanding of Google Drive</li></ul>"
+  }
+}

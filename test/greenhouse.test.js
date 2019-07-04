@@ -15,14 +15,23 @@ describe(ATS_NAME, function () {
     should.Throw(() => new ATS(), Error);
   });
 
-  it('should create valid instance', function () {
+  it('should create valid instance with string', function () {
     should.not.Throw(() => new ATS('test'));
+  });
+
+  it('should create valid instance with object', function () {
+    should.not.Throw(() => new ATS({
+      companyId: 'test'
+    }));
   });
 
   describe('client', function () {
     const testCompanyId = 'test';
+    const testCompanyParams = {
+      companyId: testCompanyId
+    }
     const testJobId = testData.jobResponse.id;
-    const client = new ATS(testCompanyId);
+    const client = new ATS(testCompanyParams);
 
     it('should retrieve valid job', async function () {
       nock('https://boards-api.greenhouse.io')

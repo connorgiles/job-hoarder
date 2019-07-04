@@ -15,8 +15,14 @@ describe(ATS_NAME, function () {
     should.Throw(() => new ATS(), Error);
   });
 
-  it('should create valid instance', function () {
+  it('should create valid instance with string', function () {
     should.not.Throw(() => new ATS('test'));
+  });
+
+  it('should create valid instance with object', function () {
+    should.not.Throw(() => new ATS({
+      companyId: 'test'
+    }));
   });
 
   describe('client', function () {

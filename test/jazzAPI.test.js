@@ -15,19 +15,25 @@ describe(ATS_NAME, function () {
     should.Throw(() => new ATS(), Error);
   });
 
-  it('should fail to create instance without API key', function () {
+  it('should fail to create instance with string', function () {
     should.Throw(() => new ATS('test'), Error);
   });
 
   it('should create valid instance', function () {
-    should.not.Throw(() => new ATS('test', 'test'));
+    should.not.Throw(() => new ATS({
+      companyId: 'test',
+      apiKey: 'test'
+    }));
   });
 
   describe('client', function () {
     const testCompanyId = 'test';
     const testAPIKey = 'test';
     const testJobId = testData.jobResponse.id;
-    const client = new ATS(testCompanyId, testAPIKey);
+    const client = new ATS({
+      companyId: testCompanyId,
+      apiKey: testAPIKey
+    });
 
     it('should retrieve valid job', async function () {
       nock('https://api.resumatorapi.com')
