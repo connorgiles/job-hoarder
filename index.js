@@ -3,11 +3,13 @@ const Lever = require('./lib/lever');
 const JazzAPI = require('./lib/jazzAPI');
 const JazzScrape = require('./lib/jazzScrape');
 const SmartRecruiters = require('./lib/smartrecruiters');
+const Workable = require('./lib/workable');
 
 module.exports = {
   Greenhouse,
   Lever,
   JazzAPI,
   JazzScrape,
-  SmartRecruiters
+  SmartRecruiters,
+  Workable
 };
