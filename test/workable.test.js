@@ -3,7 +3,7 @@ const expect = require('chai').expect;
 const should = require('chai').should();
 const nock = require('nock');
 
-const ATS_NAME = 'smartrecruiters';
+const ATS_NAME = 'workable';
 const ATS = require('../lib/' + ATS_NAME);
 const parser = require('../lib/' + ATS_NAME + '/parser')('TEST');
 
@@ -33,8 +33,8 @@ describe(ATS_NAME, function() {
     const client = new ATS(testCompanyId);
 
     it('should retrieve valid job', async function() {
-      nock('https://api.smartrecruiters.com')
-        .get(`/v1/companies/${testCompanyId}/postings/${testJobId}`)
+      nock('https://careers-page.workable.com')
+        .get(`/api/v1/accounts/${testCompanyId}/jobs/${testJobId}`)
         .reply(200, JSON.stringify(testData.jobResponse));
 
       const job = await client.getJob(testJobId);
@@ -42,8 +42,8 @@ describe(ATS_NAME, function() {
     });
 
     it('should retrieve valid jobs list', async function() {
-      nock('https://api.smartrecruiters.com')
-        .get(`/v1/companies/${testCompanyId}/postings?limit=100&offset=0`)
+      nock('https://careers-page.workable.com')
+        .post(`/api/v1/accounts/${testCompanyId}/jobs`)
         .reply(200, JSON.stringify(testData.jobsResponse));
 
       const jobs = await client.getJobs();
@@ -51,12 +51,12 @@ describe(ATS_NAME, function() {
     });
 
     it('should retrieve valid enriched jobs list', async function() {
-      nock('https://api.smartrecruiters.com')
-        .get(`/v1/companies/${testCompanyId}/postings/${testJobId}`)
+      nock('https://careers-page.workable.com')
+        .get(`/api/v1/accounts/${testCompanyId}/jobs/${testJobId}`)
         .reply(200, JSON.stringify(testData.jobResponse));
 
-      nock('https://api.smartrecruiters.com')
-        .get(`/v1/companies/${testCompanyId}/postings?limit=100&offset=0`)
+      nock('https://careers-page.workable.com')
+        .post(`/api/v1/accounts/${testCompanyId}/jobs`)
         .reply(200, JSON.stringify(testData.jobsResponse));
 
       const jobs = await client.getJobs(true);
@@ -92,7 +92,7 @@ describe(ATS_NAME, function() {
     describe('parseJobs', function() {
       it('should parse valid response body', function() {
         const parsedJobs = parser.parseJobs(
-          JSON.stringify(testData.jobsResponse.content)
+          JSON.stringify(testData.jobsResponse.results)
         );
         expect(testData.jobsParsed).to.deep.equal(parsedJobs);
       });
