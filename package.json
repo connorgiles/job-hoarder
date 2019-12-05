@@ -12,6 +12,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "html-to-text": "^5.1.1",
+    "indeed-scraper": "^3.0.2",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
     "unescape": "^1.0.1"
