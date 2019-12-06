@@ -59,7 +59,7 @@ describe(ATS_NAME, function() {
         .post(`/api/v1/accounts/${testCompanyId}/jobs`)
         .reply(200, JSON.stringify(testData.jobsResponse));
 
-      const jobs = await client.getJobs(true);
+      const jobs = await client.getJobs({ query: true });
       expect([testData.jobParsed]).to.deep.equal(jobs);
     });
   });
