@@ -38,7 +38,7 @@ describe(ATS_NAME, function() {
         .reply(200, JSON.stringify(testData.jobResponse));
 
       const job = await client.getJob(testJobId);
-      expect(testData.jobParsed).to.deep.equal(job);
+      expect(job).to.deep.equal(testData.jobParsed);
     });
 
     it('should retrieve valid jobs list', async function() {
@@ -47,7 +47,7 @@ describe(ATS_NAME, function() {
         .reply(200, JSON.stringify(testData.jobsResponse));
 
       const jobs = await client.getJobs();
-      expect(testData.jobsParsed).to.deep.equal(jobs);
+      expect(jobs).to.deep.equal(testData.jobsParsed);
     });
   });
 
@@ -55,12 +55,12 @@ describe(ATS_NAME, function() {
     describe('parseJob', function() {
       it('should parse valid job', function() {
         const parsedJob = parser.parseJob(JSON.stringify(testData.jobResponse));
-        expect(testData.jobParsed).to.deep.equal(parsedJob);
+        expect(parsedJob).to.deep.equal(testData.jobParsed);
       });
 
       it('should parse valid object', function() {
         const parsedJob = parser.parseJob(testData.jobResponse);
-        expect(testData.jobParsed).to.deep.equal(parsedJob);
+        expect(parsedJob).to.deep.equal(testData.jobParsed);
       });
 
       it('should not parse nothing', function() {
@@ -81,12 +81,12 @@ describe(ATS_NAME, function() {
         const parsedJobs = parser.parseJobs(
           JSON.stringify(testData.jobsResponse)
         );
-        expect(testData.jobsParsed).to.deep.equal(parsedJobs);
+        expect(parsedJobs).to.deep.equal(testData.jobsParsed);
       });
 
       it('should parse valid array', function() {
         const parsedJobs = parser.parseJobs(testData.jobsResponse);
-        expect(testData.jobsParsed).to.deep.equal(parsedJobs);
+        expect(parsedJobs).to.deep.equal(testData.jobsParsed);
       });
 
       it('should not parse nothing', function() {
