@@ -59,7 +59,7 @@ describe(ATS_NAME, function() {
         .get(`/v1/companies/${testCompanyId}/postings?limit=100&offset=0`)
         .reply(200, JSON.stringify(testData.jobsResponse));
 
-      const jobs = await client.getJobs(true);
+      const jobs = await client.getJobs({ enrich: true });
       expect([testData.jobParsed]).to.deep.equal(jobs);
     });
   });
