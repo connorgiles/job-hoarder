@@ -1,0 +1,1 @@
+const jobHoarder = require('../index');
