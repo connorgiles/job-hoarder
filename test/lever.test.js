@@ -5,7 +5,7 @@ const nock = require('nock');
 
 const ATS_NAME = 'lever';
 const ATS = require('../lib/' + ATS_NAME);
-const parser = require('../lib/' + ATS_NAME + '/parser')();
+const parser = require('../lib/' + ATS_NAME + '/parser');
 
 const testData = require('./stubs').loadStubs(ATS_NAME);
 
