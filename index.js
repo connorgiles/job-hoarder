@@ -5,6 +5,7 @@ const JazzScrape = require('./lib/jazzScrape');
 const SmartRecruiters = require('./lib/smartrecruiters');
 const Indeed = require('./lib/indeed');
 const Workable = require('./lib/workable');
+const LinkedIn = require('./lib/linkedin');
 
 module.exports = {
   Greenhouse,
@@ -13,5 +14,6 @@ module.exports = {
   JazzScrape,
   SmartRecruiters,
   Workable,
-  Indeed
+  Indeed,
+  LinkedIn
 };
