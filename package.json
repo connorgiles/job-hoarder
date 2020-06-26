@@ -4,8 +4,8 @@
   "description": "Job board aggregator to pull in standardized job postings from company job pages",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "test": "jest",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "author": "Connor Giles",
   "license": "ISC",
@@ -18,9 +18,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "coveralls": "^3.1.0",
-    "mocha": "^6.1.4",
-    "mocha-lcov-reporter": "^1.3.0",
-    "nock": "^10.0.6",
-    "nyc": "^14.1.1"
+    "jest": "^26.1.0",
+    "nock": "^10.0.6"
   }
 }
