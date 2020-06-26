@@ -87,7 +87,8 @@ npm coveralls
 - Smartrecruiters
 - Workable
 
-If you would like to see another job board added open an issue with tag "requested board". [View requested boards](labels/requested%20board)
+To request support for a new job board please open an issue with tag "requested board".
+[View requested boards](https://github.com/connorgiles/job-hoarder/labels/requested%20board)
 
 ## Versioning
 
