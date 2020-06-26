@@ -24,7 +24,7 @@ yarn add job-hoarder
 
 ### Usage
 
-To use the library, simply import it and select the client for your desired job board.
+To use the library, simply import the desired client for your target job board.
 
 ```node
 const { Lever } = require('job-hoarder');
