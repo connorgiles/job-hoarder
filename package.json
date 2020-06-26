@@ -1,26 +1,23 @@
 {
   "name": "job-hoarder",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Job board aggregator to pull in standardized job postings from company job pages",
   "main": "index.js",
   "scripts": {
     "test": "nyc mocha",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "author": "Connor Giles",
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
-    "html-to-text": "^5.1.1",
-    "indeed-scraper": "^3.0.2",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
     "unescape": "^1.0.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "coveralls": "^3.0.4",
+    "coveralls": "^3.1.0",
     "mocha": "^6.1.4",
     "mocha-lcov-reporter": "^1.3.0",
     "nock": "^10.0.6",

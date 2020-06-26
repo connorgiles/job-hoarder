@@ -1,1 +1,5 @@
-const jobHoarder = require('../index');
+describe('JobHoarder', () => {
+  it('library loads', () => {
+    const jobHoarder = require('../index');
+  });
+});
