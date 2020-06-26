@@ -1,5 +1,5 @@
 describe('JobHoarder', () => {
-  it('library loads', () => {
+  test('library loads', () => {
     const jobHoarder = require('../index');
   });
 });

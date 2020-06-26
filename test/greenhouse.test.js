@@ -8,33 +8,33 @@ const parser = require('../lib/' + ATS_NAME + '/parser');
 
 const testData = require('./stubs').loadStubs(ATS_NAME);
 
-describe(ATS_NAME, function() {
-  it('should fail to create instance without company', function() {
+describe(ATS_NAME, function () {
+  test('should fail to create instance without company', function () {
     should.Throw(() => new ATS(), Error);
   });
 
-  it('should create valid instance with string', function() {
+  test('should create valid instance with string', function () {
     should.not.Throw(() => new ATS('test'));
   });
 
-  it('should create valid instance with object', function() {
+  test('should create valid instance with object', function () {
     should.not.Throw(
       () =>
         new ATS({
-          companyId: 'test'
+          companyId: 'test',
         })
     );
   });
 
-  describe('client', function() {
+  describe('client', function () {
     const testCompanyId = 'test';
     const testCompanyParams = {
-      companyId: testCompanyId
+      companyId: testCompanyId,
     };
     const testJobId = testData.jobResponse.id;
     const client = new ATS(testCompanyParams);
 
-    it('should retrieve valid job', async function() {
+    test('should retrieve valid job', async function () {
       nock('https://boards-api.greenhouse.io')
         .get(`/v1/boards/${testCompanyId}/jobs/${testJobId}`)
         .reply(200, JSON.stringify(testData.jobResponse));
@@ -43,7 +43,7 @@ describe(ATS_NAME, function() {
       expect(job).to.deep.equal(testData.jobParsed);
     });
 
-    it('should retrieve valid jobs list', async function() {
+    test('should retrieve valid jobs list', async function () {
       nock('https://boards-api.greenhouse.io')
         .get(`/v1/boards/${testCompanyId}/jobs?content=true`)
         .reply(200, JSON.stringify(testData.jobsResponse));
@@ -53,53 +53,53 @@ describe(ATS_NAME, function() {
     });
   });
 
-  describe('parser', function() {
-    describe('parseJob', function() {
-      it('should parse valid job', function() {
+  describe('parser', function () {
+    describe('parseJob', function () {
+      test('should parse valid job', function () {
         const parsedJob = parser.parseJob(JSON.stringify(testData.jobResponse));
         expect(parsedJob).to.deep.equal(testData.jobParsed);
       });
 
-      it('should parse valid object', function() {
+      test('should parse valid object', function () {
         const parsedJob = parser.parseJob(testData.jobResponse);
         expect(parsedJob).to.deep.equal(testData.jobParsed);
       });
 
-      it('should not parse nothing', function() {
+      test('should not parse nothing', function () {
         should.Throw(() => parser.parseJob(), Error);
       });
 
-      it('should not parse empty', function() {
+      test('should not parse empty', function () {
         should.Throw(() => parser.parseJob({}), Error);
       });
 
-      it('should not parse null', function() {
+      test('should not parse null', function () {
         should.Throw(() => parser.parseJob(null), Error);
       });
     });
 
-    describe('parseJobs', function() {
-      it('should parse valid response body', function() {
+    describe('parseJobs', function () {
+      test('should parse valid response body', function () {
         const parsedJobs = parser.parseJobs(
           JSON.stringify(testData.jobsResponse)
         );
         expect(parsedJobs).to.deep.equal(testData.jobsParsed);
       });
 
-      it('should parse valid array', function() {
+      test('should parse valid array', function () {
         const parsedJobs = parser.parseJobs(testData.jobsResponse);
         expect(parsedJobs).to.deep.equal(testData.jobsParsed);
       });
 
-      it('should not parse nothing', function() {
+      test('should not parse nothing', function () {
         should.Throw(() => parser.parseJobs(), Error);
       });
 
-      it('should not parse empty', function() {
+      test('should not parse empty', function () {
         should.Throw(() => parser.parseJobs({}), Error);
       });
 
-      it('should not parse null', function() {
+      test('should not parse null', function () {
         should.Throw(() => parser.parseJobs(null), Error);
       });
     });
