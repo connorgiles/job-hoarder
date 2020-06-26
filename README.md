@@ -84,10 +84,11 @@ npm coveralls
 - JazzHR
   - JazzAPI
   - JazzScrape
-- Smartrecruiters
+- SmartRecruiters
 - Workable
 
 To request support for a new job board please open an issue with tag "requested board".
+
 [View requested boards](https://github.com/connorgiles/job-hoarder/labels/requested%20board)
 
 ## Versioning
