@@ -70,13 +70,24 @@ To test the application simply run the test command.
 npm test
 ```
 
-### Code Coverage
-
 In order to get a code coverage report and update coveralls with coverage details.
 
 ```
 npm coveralls
 ```
+
+## Supported Job Boards
+
+- Greenhouse
+- Lever
+- Indeed
+- JazzHR
+  - JazzAPI
+  - JazzScrape
+- Smartrecruiters
+- Workable
+
+If you would like to see another job board added open an issue with tag "requested board". [View requested boards](labels/requested%20board)
 
 ## Versioning
 
