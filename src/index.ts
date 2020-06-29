@@ -6,3 +6,4 @@ export { default as JazzAPI } from './jazzAPI';
 export { default as JazzScrape } from './jazzScrape';
 export { default as Workable } from './workable';
 export { default as Indeed } from './indeed';
+export { default as Collage } from './collage';
