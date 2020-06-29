@@ -1,4 +1,4 @@
-export type Job = {
+declare type Job = {
   id?: string;
   url?: string;
   title?: string;
@@ -8,12 +8,12 @@ export type Job = {
   description?: string;
 };
 
-export interface ClientParser {
+declare interface ClientParser {
   parseJobs(data?: any): Job[];
   parseJob(data?: any): Job;
 }
 
-export interface JobClient {
+declare interface JobClient {
   getJobs(): Promise<Job[]>;
   getJob(id: string): Promise<Job>;
 }
