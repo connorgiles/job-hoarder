@@ -1,4 +1,3 @@
-import { expect, should as chaiShould } from 'chai';
 import nock from 'nock';
 
 import JazzAPI from '../src/jazzAPI';
@@ -6,21 +5,20 @@ import JazzAPIParser from '../src/jazzAPI/parser';
 
 const ATS_NAME = 'jazzAPI';
 const testData = require('./stubs').loadStubs(ATS_NAME);
-const should = chaiShould();
 
 describe(ATS_NAME, function () {
   test('should fail to create instance without params', function () {
-    should.Throw(() => new JazzAPI(), Error);
+    expect(() => new JazzAPI()).toThrow(Error);
   });
 
   test('should create valid instance', function () {
-    should.not.Throw(
+    expect(
       () =>
         new JazzAPI({
           companyId: 'test',
           apiKey: 'test',
         })
-    );
+    ).not.toThrow();
   });
 
   describe('client', function () {
@@ -38,7 +36,7 @@ describe(ATS_NAME, function () {
         .reply(200, JSON.stringify(testData.jobResponse));
 
       const job = await client.getJob(testJobId);
-      expect(job).to.deep.equal(testData.jobParsed);
+      expect(job).toStrictEqual(testData.jobParsed);
     });
 
     test('should retrieve valid jobs list', async function () {
@@ -47,7 +45,7 @@ describe(ATS_NAME, function () {
         .reply(200, JSON.stringify(testData.jobResponse));
 
       const jobs = await client.getJobs();
-      expect(jobs).to.deep.equal(testData.jobsParsed);
+      expect(jobs).toStrictEqual(testData.jobsParsed);
     });
 
     test('should retrieve valid job applications', async function () {
@@ -56,7 +54,7 @@ describe(ATS_NAME, function () {
         .reply(200, JSON.stringify(testData.applicationsResponse));
 
       const applications = await client.getApplications(testJobId);
-      expect(applications).to.deep.equal(testData.applicationsResponse);
+      expect(applications).toStrictEqual(testData.applicationsResponse);
     });
   });
 
@@ -65,20 +63,20 @@ describe(ATS_NAME, function () {
     describe('parseJob', function () {
       test('should parse valid job', function () {
         const parsedJob = parser.parseJob(JSON.stringify(testData.jobResponse));
-        expect(parsedJob).to.deep.equal(testData.jobParsed);
+        expect(parsedJob).toStrictEqual(testData.jobParsed);
       });
 
       test('should parse valid object', function () {
         const parsedJob = parser.parseJob(testData.jobResponse);
-        expect(parsedJob).to.deep.equal(testData.jobParsed);
+        expect(parsedJob).toStrictEqual(testData.jobParsed);
       });
 
       test('should not parse nothing', function () {
-        should.Throw(() => parser.parseJob(), Error);
+        expect(() => parser.parseJob()).toThrow(Error);
       });
 
       test('should not parse null', function () {
-        should.Throw(() => parser.parseJob(null), Error);
+        expect(() => parser.parseJob(null)).toThrow(Error);
       });
     });
 
@@ -87,24 +85,24 @@ describe(ATS_NAME, function () {
         const parsedJobs = parser.parseJobs(
           JSON.stringify(testData.jobsResponse)
         );
-        expect(parsedJobs).to.deep.equal(testData.jobsParsed);
+        expect(parsedJobs).toStrictEqual(testData.jobsParsed);
       });
 
       test('should parse valid array', function () {
         const parsedJobs = parser.parseJobs(testData.jobsResponse);
-        expect(parsedJobs).to.deep.equal(testData.jobsParsed);
+        expect(parsedJobs).toStrictEqual(testData.jobsParsed);
       });
 
       test('should not parse nothing', function () {
-        should.Throw(() => parser.parseJobs(), Error);
+        expect(() => parser.parseJobs()).toThrow(Error);
       });
 
       test('should not parse empty', function () {
-        should.Throw(() => parser.parseJobs({}), Error);
+        expect(() => parser.parseJobs({})).toThrow(Error);
       });
 
       test('should not parse null', function () {
-        should.Throw(() => parser.parseJobs(null), Error);
+        expect(() => parser.parseJobs(null)).toThrow(Error);
       });
     });
 
@@ -113,22 +111,22 @@ describe(ATS_NAME, function () {
         const parsedApplications = parser.parseApplications(
           JSON.stringify(testData.applicationsResponse)
         );
-        expect(parsedApplications).to.deep.equal(testData.applicationsResponse);
+        expect(parsedApplications).toStrictEqual(testData.applicationsResponse);
       });
 
       test('should parse valid array', function () {
         const parsedApplications = parser.parseApplications(
           testData.applicationsResponse
         );
-        expect(parsedApplications).to.deep.equal(testData.applicationsResponse);
+        expect(parsedApplications).toStrictEqual(testData.applicationsResponse);
       });
 
       test('should not parse nothing', function () {
-        should.Throw(() => parser.parseApplications(), Error);
+        expect(() => parser.parseApplications()).toThrow(Error);
       });
 
       test('should not parse null', function () {
-        should.Throw(() => parser.parseApplications(null), Error);
+        expect(() => parser.parseApplications(null)).toThrow(Error);
       });
     });
   });

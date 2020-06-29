@@ -1,6 +1,4 @@
-const expect = require('chai').expect;
-
-const { wait, randomUserAgent } = require('../lib/utils');
+import { wait, randomUserAgent } from '../src/utils';
 
 describe('utils', function () {
   describe('wait', function () {
@@ -15,7 +13,7 @@ describe('utils', function () {
   describe('randomUserAgent', function () {
     test('returns a Mozilla user agent', function () {
       const userAgent = randomUserAgent();
-      expect(userAgent).contains('Mozilla');
+      expect(userAgent).toMatch(/Mozilla/i);
     });
   });
 });
