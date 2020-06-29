@@ -1,4 +1,4 @@
-import './types';
+export * from './types';
 
 export { default as Greenhouse } from './greenhouse';
 export { default as Lever } from './lever';
