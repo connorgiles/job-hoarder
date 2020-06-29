@@ -84,7 +84,6 @@ npm coveralls
 - JazzHR
   - JazzAPI
   - JazzScrape
-- SmartRecruiters
 - Workable
 
 To request support for a new job board please open an issue with tag "requested board".
