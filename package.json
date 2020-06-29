@@ -9,6 +9,8 @@
   ],
   "scripts": {
     "test": "jest",
+    "coverage": "jest --coverage",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "build": "tsc -p tsconfig.json",
     "format": "prettier --write \"src/**/*.ts\" && (prettier --write \"src/**/*.js\" || true)",
     "lint": "tslint -p tsconfig.json",
