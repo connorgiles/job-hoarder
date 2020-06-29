@@ -7,3 +7,13 @@ export { default as JazzScrape } from './jazzScrape';
 export { default as Workable } from './workable';
 export { default as Indeed } from './indeed';
 export { default as Collage } from './collage';
+
+export enum JobBoardTypes {
+  Greenhouse,
+  Lever,
+  JazzAPI,
+  JazzScrape,
+  Workable,
+  Indeed,
+  Collage,
+}
