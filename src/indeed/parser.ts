@@ -1,29 +1,39 @@
 import cheerio from 'cheerio';
 
-module.exports = (host, excludeSponsored) => {
+type IndeedResponse = {
+  continue: boolean;
+  jobs: Array<Job>;
+};
+
+export default class IndeedParser {
+  private host: string;
+  private excludeSponsored: boolean;
+
+  constructor(host: string, excludeSponsored: boolean) {
+    this.host = host;
+    this.excludeSponsored = excludeSponsored;
+  }
+
   /**
    * Parse jobs from request result
    * @param {string} data String of jobs
    * @returns {array} List of parsed jobs
    */
-  const parseJobs = (body) => {
-    const $ = cheerio.load(body);
+  parseJobs = (body?: string): IndeedResponse => {
+    if (!body) throw new Error('No jobs to parse');
+    const $ = cheerio.load(body as string);
     const jobTable = $('#resultsCol');
     const jobs = jobTable.find('.result');
     let cont = true;
 
     // Filter out ads
-    const filtered = excludeSponsored
+    const filtered = this.excludeSponsored
       ? jobs.filter((_, e) => {
           const job = $(e);
-          const footer = job.find('.jobsearch-SerpJobCard-footer');
-          const spanText = Array.from(
-            footer.find('span').map((_, span) => $(span).text())
+          const isSponsored = job.find(
+            '.jobsearch-SerpJobCard-footer span:contains("sponsored")'
           );
-          const isSponsered = spanText.some((text) =>
-            text.toLowerCase().includes('sponsored')
-          );
-          return !isSponsered;
+          return isSponsored == null;
         })
       : jobs;
 
@@ -32,11 +42,11 @@ module.exports = (host, excludeSponsored) => {
       .map((i, e) => {
         const job = $(e);
 
-        const id = job.attr('id').trim().split('_')[1];
+        const id = job.attr('id')?.trim().split('_')[1];
 
         const title = job.find('.jobtitle').text().trim();
 
-        const url = 'https://' + host + job.find('.jobtitle').attr('href');
+        const url = 'https://' + this.host + job.find('.jobtitle').attr('href');
 
         const company = job.find('.company').text().trim() || null;
 
@@ -83,13 +93,8 @@ module.exports = (host, excludeSponsored) => {
    * @param {string} data String of job result
    * @returns {object} Object of parsed job
    */
-  const parseJob = (data) => {
+  parseJob = (data?: any) => {
     // TODO: Implement parse job
     throw new Error('Function not implemented: Indeed.parseJob');
   };
-
-  return {
-    parseJobs,
-    parseJob,
-  };
-};
+}
