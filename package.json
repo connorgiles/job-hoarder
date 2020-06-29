@@ -1,6 +1,6 @@
 {
   "name": "job-hoarder",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Job board aggregator to pull in standardized job postings from company job pages",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
