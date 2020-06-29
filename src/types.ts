@@ -1,11 +1,11 @@
 type Job = {
-  id: String;
-  url: String;
-  title: String;
-  datePosted: Date;
-  jobLocation: String;
-  department: String;
-  description: String;
+  id?: string;
+  url?: string;
+  title?: string;
+  datePosted?: Date;
+  jobLocation?: string;
+  department?: string;
+  description?: string;
 };
 
 interface ClientParser {

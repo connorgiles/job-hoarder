@@ -1,8 +1,17 @@
-import parser from './parser';
+import JazzScrapeParser from './parser';
 import axios from 'axios';
 
-class Client {
-  constructor(params) {
+type JazzScrapeParams = {
+  companyId?: string;
+  enrich?: boolean;
+};
+
+export default class JazzScrape implements JobClient {
+  private parser: JazzScrapeParser;
+  private enrich: boolean;
+  private companyId: string;
+
+  constructor(params?: string | JazzScrapeParams) {
     // Allow string paramater to resolve
     if (typeof params === 'string') {
       params = {
@@ -15,21 +24,21 @@ class Client {
 
     this.companyId = params.companyId;
     this.enrich = params.enrich || false;
-    this.parser = parser;
+    this.parser = new JazzScrapeParser();
   }
 
   /**
    * Gets jobs from job board
    * @returns {array} List of jobs
    */
-  getJobs({ enrich = this.enrich } = {}) {
+  getJobs({ enrich = this.enrich }: JazzScrapeParams = {}) {
     return axios
       .get(`https://${this.companyId}.applytojob.com/apply`)
       .then((res) => res.data)
       .then(this.parser.parseJobs)
       .then((jobs) => {
         if (enrich) {
-          return Promise.all(jobs.map((j) => this.getJob(j.id)));
+          return Promise.all(jobs.map((j: any) => this.getJob(j.id)));
         }
         return jobs;
       });
@@ -40,12 +49,10 @@ class Client {
    * @param {string} id Id of job to retrieve
    * @returns {object} Job assigned to Id
    */
-  getJob(id) {
+  getJob(id: string) {
     return axios
       .get(`https://${this.companyId}.applytojob.com/apply/${id}`)
       .then((res) => res.data)
       .then(this.parser.parseJob);
   }
 }
-
-module.exports = Client;

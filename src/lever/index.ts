@@ -5,7 +5,7 @@ type LeverParams = {
   companyId: string;
 };
 
-export default class Client implements JobClient {
+export default class Lever implements JobClient {
   private companyId: string;
   private parser: LeverParser;
 
