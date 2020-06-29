@@ -1,16 +1,39 @@
 import { ensureJSON } from '../utils';
 
-module.exports = setupParser = (boardName) => {
+type WorkableJob = {
+  id: string;
+  title: string;
+  shortcode: string;
+  benefits: string;
+  description: string;
+  department: string;
+  updated_at: Date;
+  content: string;
+  published: string;
+  location: {
+    city: string;
+    region: string;
+    country: string;
+  };
+};
+
+export default class WorkableParser implements ClientParser {
+  private boardName: string;
+
+  constructor(boardName: string) {
+    this.boardName = boardName;
+  }
+
   /**
    * Parse jobs from request result
    * @param {string} data String of jobs
    * @returns {array} List of parsed jobs
    */
-  const parseJobs = (data) => {
+  parseJobs = (data?: any): Array<Job> => {
     if (!data) throw new Error('No jobs to parse');
-    const jobs = ensureJSON(data);
+    const jobs = ensureJSON(data) as Array<WorkableJob>;
     if (!jobs) throw new Error('Failed to parse jobs');
-    return jobs.map(parseJob);
+    return jobs.map(this.parseJob);
   };
 
   /**
@@ -18,7 +41,7 @@ module.exports = setupParser = (boardName) => {
    * @param {string} data String of job result
    * @returns {object} Object of parsed job
    */
-  const parseJob = (data) => {
+  parseJob = (data?: any): Job => {
     if (!data) throw new Error('No job to parse');
     const {
       id,
@@ -29,9 +52,9 @@ module.exports = setupParser = (boardName) => {
       department,
       location: { city, region, country },
       published,
-    } = ensureJSON(data);
+    } = ensureJSON(data) as WorkableJob;
 
-    const url = `https://apply.workable.com/${boardName}/j/${shortcode}/`;
+    const url = `https://apply.workable.com/${this.boardName}/j/${shortcode}/`;
 
     const jobLocation = [city, region, country].filter((val) => val).join(', ');
 
@@ -45,9 +68,4 @@ module.exports = setupParser = (boardName) => {
       description: `${description}<br/>${benefits}`,
     };
   };
-
-  return {
-    parseJobs,
-    parseJob,
-  };
-};
+}
