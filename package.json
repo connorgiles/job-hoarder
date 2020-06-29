@@ -10,7 +10,7 @@
   "scripts": {
     "test": "jest",
     "build": "tsc -p tsconfig.json",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format": "prettier --write \"src/**/*.ts\" && (prettier --write \"src/**/*.js\" || true)",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
@@ -24,7 +24,12 @@
     "type": "git",
     "url": "https://github.com/connorgiles/job-hoarder.git"
   },
-  "keywords": ["job board", "lever", "greenhouse", "indeed"],
+  "keywords": [
+    "job board",
+    "lever",
+    "greenhouse",
+    "indeed"
+  ],
   "dependencies": {
     "@types/cheerio": "^0.22.18",
     "@types/lodash.unescape": "^4.0.6",
