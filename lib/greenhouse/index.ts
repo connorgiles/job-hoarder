@@ -1,8 +1,15 @@
-const parser = require('./parser');
-const axios = require('axios');
+import GreehouseParser from './parser';
+import axios from 'axios';
 
-class Greenhouse {
-  constructor(params) {
+type GreehouseParams = {
+  companyId: string;
+};
+
+export default class Greenhouse implements JobClient {
+  private companyId: string;
+  private parser: GreehouseParser;
+
+  constructor(params: string | GreehouseParams) {
     // Allow string paramater to resolve
     if (typeof params === 'string') {
       params = {
@@ -13,7 +20,8 @@ class Greenhouse {
     if (!params || !params.companyId)
       throw new Error('Client must have a company Id');
     this.companyId = params.companyId;
-    this.parser = parser;
+    this.parser = new GreehouseParser();
+    console.log(GreehouseParser);
   }
 
   /**
@@ -34,7 +42,7 @@ class Greenhouse {
    * @param {string} id Id of job to retrieve
    * @returns {object} Job assigned to Id
    */
-  getJob(id) {
+  getJob(id: string) {
     return axios
       .get(
         `https://boards-api.greenhouse.io/v1/boards/${this.companyId}/jobs/${id}`
@@ -43,5 +51,3 @@ class Greenhouse {
       .then(this.parser.parseJob);
   }
 }
-
-module.exports = Greenhouse;

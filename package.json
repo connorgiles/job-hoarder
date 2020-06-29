@@ -2,17 +2,21 @@
   "name": "job-hoarder",
   "version": "1.6.0",
   "description": "Job board aggregator to pull in standardized job postings from company job pages",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "prepublish": "npm run build",
+    "build": "tsc",
     "test": "jest",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "author": "Connor Giles",
   "license": "MIT",
   "dependencies": {
+    "@types/lodash.unescape": "^4.0.6",
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
-    "unescape": "^1.0.1"
+    "lodash.unescape": "^4.0.1"
   },
   "jest": {
     "testEnvironment": "node"
@@ -21,6 +25,7 @@
     "chai": "^4.2.0",
     "coveralls": "^3.1.0",
     "jest": "^26.1.0",
-    "nock": "^10.0.6"
+    "nock": "^10.0.6",
+    "typescript": "^3.9.5"
   }
 }
