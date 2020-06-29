@@ -25,20 +25,19 @@ export default class GreehouseParser implements ClientParser {
    * @param {any} data String of jobs
    * @returns {Array<Job>} List of parsed jobs
    */
-  parseJobs(data: GreenhouseJobList) {
+  public parseJobs = (data?: any) => {
     if (!data) throw new Error('No jobs to parse');
     const jobs = ensureJSON(data) as GreenhouseJobList;
     if (!jobs.jobs) throw new Error('Failed to parse jobs');
-    const parse = this.parseJob.bind(this);
-    return jobs.jobs.map(parse);
-  }
+    return jobs.jobs.map((j) => this.parseJob(j));
+  };
 
   /**
    * Parses job from request result
    * @param {any} data String of job result
    * @returns {Job} Object of parsed job
    */
-  parseJob(data: GreenhouseJob) {
+  public parseJob = (data?: any) => {
     if (!data) throw new Error('No job to parse');
     const job = ensureJSON(data) as GreenhouseJob;
     return {
@@ -50,5 +49,5 @@ export default class GreehouseParser implements ClientParser {
       department: job.departments.map((d) => d.name).join(', '),
       description: decode(job.content),
     };
-  }
+  };
 }

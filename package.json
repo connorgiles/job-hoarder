@@ -4,9 +4,12 @@
   "description": "Job board aggregator to pull in standardized job postings from company job pages",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
     "prepublish": "npm run build",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.json",
     "test": "jest",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
@@ -19,13 +22,28 @@
     "lodash.unescape": "^4.0.1"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.(t|j)sx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   },
   "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/jest": "^26.0.3",
     "chai": "^4.2.0",
     "coveralls": "^3.1.0",
     "jest": "^26.1.0",
-    "nock": "^10.0.6",
+    "nock": "^13.0.0",
+    "ts-jest": "^26.1.1",
     "typescript": "^3.9.5"
   }
 }

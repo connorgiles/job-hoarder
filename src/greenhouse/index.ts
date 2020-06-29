@@ -9,7 +9,7 @@ export default class Greenhouse implements JobClient {
   private companyId: string;
   private parser: GreehouseParser;
 
-  constructor(params: string | GreehouseParams) {
+  constructor(params?: string | GreehouseParams) {
     // Allow string paramater to resolve
     if (typeof params === 'string') {
       params = {
@@ -21,7 +21,6 @@ export default class Greenhouse implements JobClient {
       throw new Error('Client must have a company Id');
     this.companyId = params.companyId;
     this.parser = new GreehouseParser();
-    console.log(GreehouseParser);
   }
 
   /**

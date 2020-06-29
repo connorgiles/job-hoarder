@@ -9,8 +9,8 @@ type Job = {
 };
 
 interface ClientParser {
-  parseJobs(data: object): Array<Job>;
-  parseJob(data: object): Job;
+  parseJobs(data?: any): Array<Job>;
+  parseJob(data?: any): Job;
 }
 
 interface JobClient {

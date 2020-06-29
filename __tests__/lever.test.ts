@@ -1,27 +1,26 @@
-const assert = require('assert');
-const expect = require('chai').expect;
-const should = require('chai').should();
-const nock = require('nock');
+import { expect, should as chaiShould } from 'chai';
+import nock from 'nock';
+
+import Lever from '../src/lever';
+import LeverParser from '../src/lever/parser';
 
 const ATS_NAME = 'lever';
-const ATS = require('../lib/' + ATS_NAME);
-const parser = require('../lib/' + ATS_NAME + '/parser');
-
 const testData = require('./stubs').loadStubs(ATS_NAME);
+const should = chaiShould();
 
 describe(ATS_NAME, function () {
   test('should fail to create instance without company', function () {
-    should.Throw(() => new ATS(), Error);
+    should.Throw(() => new Lever(), Error);
   });
 
   test('should create valid instance with string', function () {
-    should.not.Throw(() => new ATS('test'));
+    should.not.Throw(() => new Lever('test'));
   });
 
   test('should create valid instance with object', function () {
     should.not.Throw(
       () =>
-        new ATS({
+        new Lever({
           companyId: 'test',
         })
     );
@@ -30,7 +29,7 @@ describe(ATS_NAME, function () {
   describe('client', function () {
     const testCompanyId = 'test';
     const testJobId = testData.jobResponse.id;
-    const client = new ATS(testCompanyId);
+    const client = new Lever(testCompanyId);
 
     test('should retrieve valid job', async function () {
       nock('https://api.lever.co')
@@ -52,6 +51,7 @@ describe(ATS_NAME, function () {
   });
 
   describe('parser', function () {
+    const parser = new LeverParser();
     describe('parseJob', function () {
       test('should parse valid job', function () {
         const parsedJob = parser.parseJob(JSON.stringify(testData.jobResponse));

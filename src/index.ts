@@ -1,4 +1,7 @@
-import Greenhouse from './greenhouse';
+import './types';
+
+export { default as Greenhouse } from './greenhouse';
+export { default as Lever } from './lever';
 /*
 import Lever from './lever';
 import JazzAPI from './jazzAPI';
@@ -8,8 +11,6 @@ import Indeed from './indeed';
 import Workable from './workable';
 
 */
-
-export { Greenhouse };
 
 /*,
   Lever,

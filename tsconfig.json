@@ -2,9 +2,11 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "declaration": true,
-    "outDir": "./build",
     "strict": true,
-    "esModuleInterop": true
-  }
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./lib",
+    "declaration": true
+  },
+  "include": ["./src"]
 }

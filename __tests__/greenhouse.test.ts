@@ -1,26 +1,26 @@
-const expect = require('chai').expect;
-const should = require('chai').should();
-const nock = require('nock');
+import { expect, should as chaiShould } from 'chai';
+import nock from 'nock';
+
+import Greehouse from '../src/greenhouse';
+import GreehouseParser from '../src/greenhouse/parser';
 
 const ATS_NAME = 'greenhouse';
-const ATS = require('../lib/' + ATS_NAME);
-const parser = require('../lib/' + ATS_NAME + '/parser');
-
 const testData = require('./stubs').loadStubs(ATS_NAME);
+const should = chaiShould();
 
 describe(ATS_NAME, function () {
   test('should fail to create instance without company', function () {
-    should.Throw(() => new ATS(), Error);
+    should.Throw(() => new Greehouse(), Error);
   });
 
   test('should create valid instance with string', function () {
-    should.not.Throw(() => new ATS('test'));
+    should.not.Throw(() => new Greehouse('test'));
   });
 
   test('should create valid instance with object', function () {
     should.not.Throw(
       () =>
-        new ATS({
+        new Greehouse({
           companyId: 'test',
         })
     );
@@ -32,7 +32,7 @@ describe(ATS_NAME, function () {
       companyId: testCompanyId,
     };
     const testJobId = testData.jobResponse.id;
-    const client = new ATS(testCompanyParams);
+    const client = new Greehouse(testCompanyParams);
 
     test('should retrieve valid job', async function () {
       nock('https://boards-api.greenhouse.io')
@@ -54,8 +54,9 @@ describe(ATS_NAME, function () {
   });
 
   describe('parser', function () {
+    const parser = new GreehouseParser();
     describe('parseJob', function () {
-      test('should parse valid job', function () {
+      test('should parse valid string', function () {
         const parsedJob = parser.parseJob(JSON.stringify(testData.jobResponse));
         expect(parsedJob).to.deep.equal(testData.jobParsed);
       });
@@ -67,10 +68,6 @@ describe(ATS_NAME, function () {
 
       test('should not parse nothing', function () {
         should.Throw(() => parser.parseJob(), Error);
-      });
-
-      test('should not parse empty', function () {
-        should.Throw(() => parser.parseJob({}), Error);
       });
 
       test('should not parse null', function () {
