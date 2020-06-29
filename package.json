@@ -8,15 +8,23 @@
     "lib/**/*"
   ],
   "scripts": {
-    "prepublish": "npm run build",
-    "format": "prettier --write \"src/**/*.ts\" && (prettier --write \"src/**/*.js\" || true)",
-    "lint": "tslint -p tsconfig.json",
-    "build": "tsc -p tsconfig.json",
     "test": "jest",
-    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+    "build": "tsc -p tsconfig.json",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "author": "Connor Giles",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/connorgiles/job-hoarder.git"
+  },
+  "keywords": ["job board", "lever", "greenhouse", "indeed"],
   "dependencies": {
     "@types/cheerio": "^0.22.18",
     "@types/lodash.unescape": "^4.0.6",

@@ -14,6 +14,6 @@ interface ClientParser {
 }
 
 interface JobClient {
-  getJobs(): Promise<Job>[];
+  getJobs(): Promise<Job[]>;
   getJob(id: string): Promise<Job>;
 }
