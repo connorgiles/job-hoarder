@@ -7,7 +7,7 @@ type WorkableParams = {
 };
 
 type WorkablePageResponse = {
-  results: Array<object>;
+  results: object[];
   nextPage: string;
 };
 
@@ -24,8 +24,7 @@ export default class Workable implements JobClient {
       };
     }
 
-    if (!params || !params.companyId)
-      throw new Error('Client must have a company Id');
+    if (!params || !params.companyId) throw new Error('Client must have a company Id');
 
     this.companyId = params.companyId;
     this.query = params.query || '';
@@ -33,25 +32,23 @@ export default class Workable implements JobClient {
   }
 
   private async queryAll(uri: string, query: string | undefined) {
-    let totalResults: Array<object> | undefined = undefined;
-    let token: string | undefined = undefined;
+    let totalResults: object[] | undefined;
+    let token: string | undefined;
 
-    const getSomeJobs = (token: string): Promise<WorkablePageResponse> => {
+    const getSomeJobs = (t: string): Promise<WorkablePageResponse> => {
       const body = {
         query,
         location: [],
         department: [],
         worktype: [],
         remote: [],
-        token: token || undefined,
+        token: t || undefined,
       };
       return axios.post(uri, body).then((res) => res.data);
     };
 
-    while (totalResults === undefined || token != undefined) {
-      let { results, nextPage } = (await getSomeJobs(
-        token as string
-      )) as WorkablePageResponse;
+    while (totalResults === undefined || token) {
+      const { results, nextPage } = (await getSomeJobs(token as string)) as WorkablePageResponse;
       token = nextPage;
       if (!totalResults) totalResults = [];
       if (!results) return totalResults;
@@ -65,10 +62,9 @@ export default class Workable implements JobClient {
    * @returns {array} List of jobs
    */
   getJobs({ query = this.query }: WorkableParams = {}) {
-    return this.queryAll(
-      `https://careers-page.workable.com/api/v1/accounts/${this.companyId}/jobs`,
-      query
-    ).then(this.parser.parseJobs);
+    return this.queryAll(`https://careers-page.workable.com/api/v1/accounts/${this.companyId}/jobs`, query).then(
+      this.parser.parseJobs,
+    );
   }
 
   /**
@@ -78,9 +74,7 @@ export default class Workable implements JobClient {
    */
   getJob(id: string) {
     return axios
-      .get(
-        `https://careers-page.workable.com/api/v1/accounts/${this.companyId}/jobs/${id}`
-      )
+      .get(`https://careers-page.workable.com/api/v1/accounts/${this.companyId}/jobs/${id}`)
       .then((res) => res.data)
       .then(this.parser.parseJob);
   }

@@ -17,8 +17,7 @@ export default class Greenhouse implements JobClient {
       };
     }
 
-    if (!params || !params.companyId)
-      throw new Error('Client must have a company Id');
+    if (!params || !params.companyId) throw new Error('Client must have a company Id');
     this.companyId = params.companyId;
     this.parser = new GreehouseParser();
   }
@@ -29,9 +28,7 @@ export default class Greenhouse implements JobClient {
    */
   getJobs() {
     return axios
-      .get(
-        `https://boards-api.greenhouse.io/v1/boards/${this.companyId}/jobs?content=true`
-      )
+      .get(`https://boards-api.greenhouse.io/v1/boards/${this.companyId}/jobs?content=true`)
       .then((res) => res.data)
       .then(this.parser.parseJobs);
   }
@@ -43,9 +40,7 @@ export default class Greenhouse implements JobClient {
    */
   getJob(id: string) {
     return axios
-      .get(
-        `https://boards-api.greenhouse.io/v1/boards/${this.companyId}/jobs/${id}`
-      )
+      .get(`https://boards-api.greenhouse.io/v1/boards/${this.companyId}/jobs/${id}`)
       .then((res) => res.data)
       .then(this.parser.parseJob);
   }

@@ -74,10 +74,8 @@ export default class Indeed implements JobClient {
     return encodeURI(q);
   }
 
-  private buildDescriptionsUrl(jobIds: Array<string>) {
-    return `https://${this.params.host}/rpc/jobdescs?jks=${encodeURIComponent(
-      jobIds.join(',')
-    )}`;
+  private buildDescriptionsUrl(jobIds: string[]) {
+    return `https://${this.params.host}/rpc/jobdescs?jks=${encodeURIComponent(jobIds.join(','))}`;
   }
 
   /**
@@ -95,9 +93,7 @@ export default class Indeed implements JobClient {
     const set = new Set();
 
     // Recursive function to get jobs until limit
-    const getSomeJobs = async (
-      jobs: Array<object> = []
-    ): Promise<Array<Job>> => {
+    const getSomeJobs = async (jobs: object[] = []): Promise<Job[]> => {
       const url = this.buildUrl(start);
       const body = await axios.get(url).then((res) => res.data);
       const parsed = this.parser.parseJobs(body);
@@ -118,9 +114,7 @@ export default class Indeed implements JobClient {
         // Enrich with Job Descriptions
         const jobIds = parsed.jobs.map((j: Job) => j.id) as string[];
         const descriptionUrl = this.buildDescriptionsUrl(jobIds);
-        const descriptions = await axios
-          .get(descriptionUrl)
-          .then((res) => res.data);
+        const descriptions = await axios.get(descriptionUrl).then((res) => res.data);
 
         parsed.jobs = parsed.jobs.map((j: Job) => ({
           ...j,
@@ -133,8 +127,8 @@ export default class Indeed implements JobClient {
       // Check exit cases
       if (parsed.continue !== true) return jobs;
       // If we reach the limit stop looping
-      if (limit != 0 && jobs.length > limit) {
-        while (jobs.length != limit) jobs.pop();
+      if (limit !== 0 && jobs.length > limit) {
+        while (jobs.length !== limit) jobs.pop();
         return jobs;
       }
 

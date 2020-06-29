@@ -1,4 +1,4 @@
-const userAgents: Array<String> = [
+const userAgents: string[] = [
   'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko',
   'Mozilla/5.0 (Windows NT 5.1; rv:40.0) Gecko/20100101 Firefox/40.0',
   'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.85 Safari/537.36',
@@ -533,5 +533,4 @@ const userAgents: Array<String> = [
   'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; ASU2JS; rv:11.0) like Gecko',
 ];
 
-export default (): String =>
-  userAgents[Math.floor(Math.random() * userAgents.length)];
+export default (): string => userAgents[Math.floor(Math.random() * userAgents.length)];

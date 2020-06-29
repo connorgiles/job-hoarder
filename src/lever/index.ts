@@ -17,8 +17,7 @@ export default class Lever implements JobClient {
       };
     }
     // Check valid params
-    if (!params || !params.companyId)
-      throw new Error('Client must have a company Id');
+    if (!params || !params.companyId) throw new Error('Client must have a company Id');
 
     this.companyId = params.companyId;
     this.parser = new LeverParser();

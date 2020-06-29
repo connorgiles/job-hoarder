@@ -9,11 +9,11 @@ type Job = {
 };
 
 interface ClientParser {
-  parseJobs(data?: any): Array<Job>;
+  parseJobs(data?: any): Job[];
   parseJob(data?: any): Job;
 }
 
 interface JobClient {
-  getJobs(): Promise<Array<Job>>;
+  getJobs(): Promise<Job>[];
   getJob(id: string): Promise<Job>;
 }

@@ -5,10 +5,7 @@ import cheerio from 'cheerio';
  * @param {String} text text to search from
  * @param {RegEx} pattern regex pattern to match
  */
-const getMatch = (
-  text: string | undefined,
-  pattern: RegExp
-): string | undefined => {
+const getMatch = (text: string | undefined, pattern: RegExp): string | undefined => {
   if (!text) return undefined;
   const match = text.match(pattern);
   return match && match.length > 1 ? match[1] : undefined;
@@ -20,13 +17,13 @@ export default class JazzScrapeParser implements ClientParser {
    * @param {string} data String of jobs
    * @returns {array} List of parsed jobs
    */
-  public parseJobs = (data?: any): Array<Job> => {
+  public parseJobs = (data?: any): Job[] => {
     if (!data) throw new Error('No jobs to parse');
 
-    const jobs: Array<Job> = [];
+    const jobs: Job[] = [];
 
     const $ = cheerio.load(data);
-    $('.jobs-list ul li.list-group-item').each(function (i: number, elem) {
+    $('.jobs-list ul li.list-group-item').each((i: number, elem: CheerioElement) => {
       const job = $(elem);
 
       const url = job.find('a').attr('href');
@@ -59,9 +56,7 @@ export default class JazzScrapeParser implements ClientParser {
     if (!data) throw new Error('No job to parse');
 
     const $ = cheerio.load(data);
-    const parsedData = JSON.parse(
-      $('script[type="application/ld+json"]').html() as string
-    );
+    const parsedData = JSON.parse($('script[type="application/ld+json"]').html() as string);
 
     const {
       title,
@@ -77,9 +72,7 @@ export default class JazzScrapeParser implements ClientParser {
 
     const datePosted = new Date(pDate);
 
-    const jobLocation = loc
-      ? `${loc.addressLocality}, ${loc.addressRegion}`
-      : undefined;
+    const jobLocation = loc ? `${loc.addressLocality}, ${loc.addressRegion}` : undefined;
 
     const department = $('li[title="Department"]').text().trim();
 
@@ -90,7 +83,7 @@ export default class JazzScrapeParser implements ClientParser {
       datePosted,
       jobLocation,
       department,
-      description: description,
+      description,
     };
   };
 }

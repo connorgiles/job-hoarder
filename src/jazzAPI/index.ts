@@ -23,13 +23,11 @@ export default class JazzAPI {
 
   private async queryAll(url: string) {
     let page = 1;
-    let totalResults: Array<object> = [];
-    let result: Array<object> = [];
+    let totalResults: object[] = [];
+    let result: object[] = [];
 
     while (page === 1 || result.length === MAX_PAGE_RESULTS) {
-      result = await axios
-        .get(`${url}/page/${page}?apikey=${this.apiKey}`)
-        .then((res) => res.data);
+      result = await axios.get(`${url}/page/${page}?apikey=${this.apiKey}`).then((res) => res.data);
       if (!result) return totalResults;
       totalResults = totalResults.concat(result);
       page++;
@@ -44,9 +42,9 @@ export default class JazzAPI {
    * @returns {array} List of jobs
    */
   getJobs({ status = this.status } = {}) {
-    return this.queryAll(
-      `https://api.resumatorapi.com/v1/jobs${status ? '/status/' + status : ''}`
-    ).then(this.parser.parseJobs);
+    return this.queryAll(`https://api.resumatorapi.com/v1/jobs${status ? '/status/' + status : ''}`).then(
+      this.parser.parseJobs,
+    );
   }
 
   /**
@@ -67,8 +65,8 @@ export default class JazzAPI {
    * @returns {array} Applicants to the job
    */
   getApplications(jobId: string) {
-    return this.queryAll(
-      `https://api.resumatorapi.com/v1/applicants/job_id/${jobId}`
-    ).then(this.parser.parseApplications);
+    return this.queryAll(`https://api.resumatorapi.com/v1/applicants/job_id/${jobId}`).then(
+      this.parser.parseApplications,
+    );
   }
 }

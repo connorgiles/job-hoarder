@@ -33,9 +33,9 @@ export default class JazzAPIParser implements ClientParser {
    * @param {string} data String of jobs
    * @returns {array} List of parsed jobs
    */
-  public parseJobs = (data?: any): Array<Job> => {
+  public parseJobs = (data?: any): Job[] => {
     if (!data) throw new Error('No jobs to parse');
-    let jobs = ensureJSON(data) as Array<JazzAPIJob>;
+    const jobs = ensureJSON(data) as JazzAPIJob[];
     return jobs.map(this.parseJob);
   };
 
@@ -46,7 +46,7 @@ export default class JazzAPIParser implements ClientParser {
    */
   public parseJob = (data?: any): Job => {
     if (!data) throw new Error('No job to parse');
-    let job = ensureJSON(data) as JazzAPIJob;
+    const job = ensureJSON(data) as JazzAPIJob;
     return {
       id: job.id,
       url: `https://${this.boardName}.applytojob.com/apply/${job.board_code}`,
@@ -63,8 +63,8 @@ export default class JazzAPIParser implements ClientParser {
    * @param {string} data String of application results
    * @returns {array} List of applications
    */
-  public parseApplications = (data?: any): Array<JazzAPIApplication> => {
+  public parseApplications = (data?: any): JazzAPIApplication[] => {
     if (!data) throw new Error('No applications to parse');
-    return ensureJSON(data) as Array<JazzAPIApplication>;
+    return ensureJSON(data) as JazzAPIApplication[];
   };
 }

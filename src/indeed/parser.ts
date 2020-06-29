@@ -2,7 +2,7 @@ import cheerio from 'cheerio';
 
 type IndeedResponse = {
   continue: boolean;
-  jobs: Array<Job>;
+  jobs: Job[];
 };
 
 export default class IndeedParser {
@@ -30,9 +30,7 @@ export default class IndeedParser {
     const filtered = this.excludeSponsored
       ? jobs.filter((_, e) => {
           const job = $(e);
-          const isSponsored = job.find(
-            '.jobsearch-SerpJobCard-footer span:contains("sponsored")'
-          );
+          const isSponsored = job.find('.jobsearch-SerpJobCard-footer span:contains("sponsored")');
           return isSponsored == null;
         })
       : jobs;
@@ -50,9 +48,7 @@ export default class IndeedParser {
 
         const company = job.find('.company').text().trim() || null;
 
-        const companyUrl = job
-          .find('.company a[data-tn-element="companyName"]')
-          .attr('href');
+        const companyUrl = job.find('.company a[data-tn-element="companyName"]').attr('href');
 
         const jobLocation = job.find('.location').text().trim();
 

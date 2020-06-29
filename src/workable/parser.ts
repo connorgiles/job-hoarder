@@ -29,9 +29,9 @@ export default class WorkableParser implements ClientParser {
    * @param {string} data String of jobs
    * @returns {array} List of parsed jobs
    */
-  parseJobs = (data?: any): Array<Job> => {
+  parseJobs = (data?: any): Job[] => {
     if (!data) throw new Error('No jobs to parse');
-    const jobs = ensureJSON(data) as Array<WorkableJob>;
+    const jobs = ensureJSON(data) as WorkableJob[];
     if (!jobs) throw new Error('Failed to parse jobs');
     return jobs.map(this.parseJob);
   };
@@ -63,7 +63,7 @@ export default class WorkableParser implements ClientParser {
       url,
       title,
       datePosted: new Date(published),
-      jobLocation: jobLocation,
+      jobLocation,
       department,
       description: `${description}<br/>${benefits}`,
     };

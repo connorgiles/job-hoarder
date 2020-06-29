@@ -19,8 +19,7 @@ export default class JazzScrape implements JobClient {
       };
     }
     // Check for params
-    if (!params || !params.companyId)
-      throw new Error('Client must have a company Id');
+    if (!params || !params.companyId) throw new Error('Client must have a company Id');
 
     this.companyId = params.companyId;
     this.enrich = params.enrich || false;

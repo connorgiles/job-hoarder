@@ -12,18 +12,18 @@ type GreenhouseJob = {
   updated_at: Date;
   location: GreenhouseRelated;
   content: string;
-  departments: Array<GreenhouseRelated>;
+  departments: GreenhouseRelated[];
 };
 
 type GreenhouseJobList = {
-  jobs: Array<GreenhouseJob>;
+  jobs: GreenhouseJob[];
 };
 
 export default class GreehouseParser implements ClientParser {
   /**
    * Parse jobs from request result
    * @param {any} data String of jobs
-   * @returns {Array<Job>} List of parsed jobs
+   * @returns {Job[]} List of parsed jobs
    */
   public parseJobs = (data?: any) => {
     if (!data) throw new Error('No jobs to parse');

@@ -7,7 +7,7 @@ type LeverJob = {
   createdAt: Date;
   categories: { location: string; department: string; team: string };
   description: string;
-  lists: Array<LeverDescriptionList>;
+  lists: LeverDescriptionList[];
   additional: string;
 };
 
@@ -18,7 +18,7 @@ type LeverDescriptionList = {
 
 type LeverDescriptionParams = {
   desc: string;
-  lists: Array<LeverDescriptionList>;
+  lists: LeverDescriptionList[];
   additional: string;
 };
 
@@ -28,11 +28,7 @@ export default class LeverParser implements ClientParser {
    * @param {object} job Job to build description from
    * @returns {string} Job description
    */
-  private parseDescription = ({
-    desc,
-    lists,
-    additional,
-  }: LeverDescriptionParams): string => {
+  private parseDescription = ({ desc, lists, additional }: LeverDescriptionParams): string => {
     let description = '';
     description += desc;
     lists.forEach((l) => {
@@ -50,7 +46,7 @@ export default class LeverParser implements ClientParser {
    */
   public parseJobs = (data?: any) => {
     if (!data) throw new Error('No jobs to parse');
-    let jobs = ensureJSON(data) as Array<LeverJob>;
+    const jobs = ensureJSON(data) as LeverJob[];
     return jobs.map(this.parseJob);
   };
 
