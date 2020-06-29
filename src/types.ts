@@ -8,12 +8,6 @@ type Job = {
   description?: string;
 };
 
-interface PublicJob extends Job {
-  company?: string;
-  companyUrl: string;
-  salary: string;
-}
-
 interface ClientParser {
   parseJobs(data?: any): Array<Job>;
   parseJob(data?: any): Job;
