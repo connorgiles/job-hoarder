@@ -1,4 +1,4 @@
-import Indeed from '../src/indeed';
+import { Indeed } from '../src';
 import IndeedParser from '../src/indeed/parser';
 
 describe('Indeed', () => {

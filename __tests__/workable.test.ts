@@ -1,6 +1,6 @@
 import nock from 'nock';
 
-import Workable from '../src/workable';
+import { Workable } from '../src';
 import WorkableParser from '../src/workable/parser';
 
 import { loadStubs } from './stubs';

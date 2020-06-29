@@ -1,4 +1,4 @@
-import JazzScrape from '../src/jazzScrape';
+import { JazzScrape } from '../src';
 import JazzScrapeParser from '../src/jazzScrape/parser';
 
 describe('JazzScrape', () => {

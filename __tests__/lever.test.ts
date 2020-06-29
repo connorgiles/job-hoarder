@@ -1,6 +1,6 @@
 import nock from 'nock';
 
-import Lever from '../src/lever';
+import { Lever } from '../src';
 import LeverParser from '../src/lever/parser';
 
 import { loadStubs } from './stubs';

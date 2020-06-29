@@ -1,6 +1,6 @@
 import nock from 'nock';
 
-import JazzAPI from '../src/jazzAPI';
+import { JazzAPI } from '../src';
 import JazzAPIParser from '../src/jazzAPI/parser';
 
 import { loadStubs } from './stubs';

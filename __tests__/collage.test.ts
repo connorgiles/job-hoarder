@@ -1,6 +1,6 @@
 import nock from 'nock';
 
-import Collage from '../src/collage';
+import { Collage } from '../src';
 import CollageParser from '../src/collage/parser';
 
 import { loadStubs } from './stubs';

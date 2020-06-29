@@ -1,24 +1,24 @@
 import nock from 'nock';
 
-import Greehouse from '../src/greenhouse';
-import GreehouseParser from '../src/greenhouse/parser';
+import { Greenhouse } from '../src';
+import GreenhouseParser from '../src/greenhouse/parser';
 
 import { loadStubs } from './stubs';
 const testData = loadStubs('greenhouse');
 
 describe('Greenhouse', () => {
   test('should fail to create instance without company', () => {
-    expect(() => new Greehouse()).toThrow(Error);
+    expect(() => new Greenhouse()).toThrow(Error);
   });
 
   test('should create valid instance with string', () => {
-    expect(() => new Greehouse('test')).not.toThrow();
+    expect(() => new Greenhouse('test')).not.toThrow();
   });
 
   test('should create valid instance with object', () => {
     expect(
       () =>
-        new Greehouse({
+        new Greenhouse({
           companyId: 'test',
         }),
     ).not.toThrow();
@@ -30,7 +30,7 @@ describe('Greenhouse', () => {
       companyId: testCompanyId,
     };
     const testJobId = testData.jobResponse.id;
-    const client = new Greehouse(testCompanyParams);
+    const client = new Greenhouse(testCompanyParams);
 
     test('should retrieve valid job', async () => {
       nock('https://boards-api.greenhouse.io')
@@ -52,7 +52,7 @@ describe('Greenhouse', () => {
   });
 
   describe('parser', () => {
-    const parser = new GreehouseParser();
+    const parser = new GreenhouseParser();
     describe('parseJob', () => {
       test('should parse valid string', () => {
         const parsedJob = parser.parseJob(JSON.stringify(testData.jobResponse));
