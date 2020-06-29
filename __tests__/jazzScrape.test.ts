@@ -1,13 +1,11 @@
 import JazzScrape from '../src/jazzScrape';
 import JazzScrapeParser from '../src/jazzScrape/parser';
 
-const ATS_NAME = 'jazzScrape';
-
-describe(ATS_NAME, function () {
-  describe('client', function () {
+describe('JazzScrape', () => {
+  describe('client', () => {
     const client = new JazzScrape('tedconferencesllc');
 
-    test('gets live job data', async function () {
+    test('gets live job data', async () => {
       const jobs = await client.getJobs();
       expect(Array.isArray(jobs)).toBe(true);
       expect(jobs.length).toBeGreaterThan(0);
@@ -15,28 +13,28 @@ describe(ATS_NAME, function () {
     });
   });
 
-  describe('parser', function () {
+  describe('parser', () => {
     const parser = new JazzScrapeParser();
-    describe('parseJob', function () {
-      test('should not parse nothing', function () {
+    describe('parseJob', () => {
+      test('should not parse nothing', () => {
         expect(() => parser.parseJob()).toThrow(Error);
       });
 
-      test('should not parse empty', function () {
+      test('should not parse empty', () => {
         expect(() => parser.parseJob({})).toThrow(Error);
       });
 
-      test('should not parse null', function () {
+      test('should not parse null', () => {
         expect(() => parser.parseJob(null)).toThrow(Error);
       });
     });
 
-    describe('parseJobs', function () {
-      test('should not parse nothing', function () {
+    describe('parseJobs', () => {
+      test('should not parse nothing', () => {
         expect(() => parser.parseJobs()).toThrow(Error);
       });
 
-      test('should not parse null', function () {
+      test('should not parse null', () => {
         expect(() => parser.parseJobs(null)).toThrow(Error);
       });
     });
