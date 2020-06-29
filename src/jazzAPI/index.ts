@@ -1,19 +1,30 @@
-import setupParser from './parser';
+import JazzAPIParser from './parser';
 import axios from 'axios';
 
 const MAX_PAGE_RESULTS = 100;
-class Client {
-  constructor({ companyId, apiKey, status = 'open' }) {
+
+type JazzAPIParams = {
+  companyId?: string;
+  apiKey?: string;
+  status?: string;
+};
+
+export default class JazzAPI {
+  private parser: JazzAPIParser;
+  private status: string;
+  private apiKey: string;
+
+  constructor({ companyId, apiKey, status = 'open' }: JazzAPIParams = {}) {
     if (!companyId || !apiKey) throw new Error('Invalid params to instantiate');
     this.apiKey = apiKey;
     this.status = status;
-    this.parser = setupParser(companyId);
+    this.parser = new JazzAPIParser(companyId);
   }
 
-  async _queryAll(url) {
+  private async queryAll(url: string) {
     let page = 1;
-    let totalResults = [];
-    let result = [];
+    let totalResults: Array<object> = [];
+    let result: Array<object> = [];
 
     while (page === 1 || result.length === MAX_PAGE_RESULTS) {
       result = await axios
@@ -33,7 +44,7 @@ class Client {
    * @returns {array} List of jobs
    */
   getJobs({ status = this.status } = {}) {
-    return this._queryAll(
+    return this.queryAll(
       `https://api.resumatorapi.com/v1/jobs${status ? '/status/' + status : ''}`
     ).then(this.parser.parseJobs);
   }
@@ -43,7 +54,7 @@ class Client {
    * @param {string} id Id of job to retrieve
    * @returns {object} Job assigned to Id
    */
-  getJob(id) {
+  getJob(id: string) {
     return axios
       .get(`https://api.resumatorapi.com/v1/jobs/${id}?apikey=${this.apiKey}`)
       .then((res) => res.data)
@@ -55,11 +66,9 @@ class Client {
    * @param {string} jobId Id of job to retrieve applications from
    * @returns {array} Applicants to the job
    */
-  getApplications(jobId) {
-    return this._queryAll(
+  getApplications(jobId: string) {
+    return this.queryAll(
       `https://api.resumatorapi.com/v1/applicants/job_id/${jobId}`
     ).then(this.parser.parseApplications);
   }
 }
-
-module.exports = Client;

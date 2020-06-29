@@ -1,27 +1,22 @@
-const assert = require('assert');
-const expect = require('chai').expect;
-const should = require('chai').should();
-const nock = require('nock');
+import { expect, should as chaiShould } from 'chai';
+import nock from 'nock';
+
+import JazzAPI from '../src/jazzAPI';
+import JazzAPIParser from '../src/jazzAPI/parser';
 
 const ATS_NAME = 'jazzAPI';
-const ATS = require('../lib/' + ATS_NAME);
-const parser = require('../lib/' + ATS_NAME + '/parser')('test');
-
 const testData = require('./stubs').loadStubs(ATS_NAME);
+const should = chaiShould();
 
 describe(ATS_NAME, function () {
   test('should fail to create instance without params', function () {
-    should.Throw(() => new ATS(), Error);
-  });
-
-  test('should fail to create instance with string', function () {
-    should.Throw(() => new ATS('test'), Error);
+    should.Throw(() => new JazzAPI(), Error);
   });
 
   test('should create valid instance', function () {
     should.not.Throw(
       () =>
-        new ATS({
+        new JazzAPI({
           companyId: 'test',
           apiKey: 'test',
         })
@@ -32,7 +27,7 @@ describe(ATS_NAME, function () {
     const testCompanyId = 'test';
     const testAPIKey = 'test';
     const testJobId = testData.jobResponse.id;
-    const client = new ATS({
+    const client = new JazzAPI({
       companyId: testCompanyId,
       apiKey: testAPIKey,
     });
@@ -61,11 +56,12 @@ describe(ATS_NAME, function () {
         .reply(200, JSON.stringify(testData.applicationsResponse));
 
       const applications = await client.getApplications(testJobId);
-      expect(applications).to.deep.equal(testData.applicationsParsed);
+      expect(applications).to.deep.equal(testData.applicationsResponse);
     });
   });
 
   describe('parser', function () {
+    const parser = new JazzAPIParser('test');
     describe('parseJob', function () {
       test('should parse valid job', function () {
         const parsedJob = parser.parseJob(JSON.stringify(testData.jobResponse));
@@ -117,14 +113,14 @@ describe(ATS_NAME, function () {
         const parsedApplications = parser.parseApplications(
           JSON.stringify(testData.applicationsResponse)
         );
-        expect(parsedApplications).to.deep.equal(testData.applicationsParsed);
+        expect(parsedApplications).to.deep.equal(testData.applicationsResponse);
       });
 
       test('should parse valid array', function () {
         const parsedApplications = parser.parseApplications(
           testData.applicationsResponse
         );
-        expect(parsedApplications).to.deep.equal(testData.applicationsParsed);
+        expect(parsedApplications).to.deep.equal(testData.applicationsResponse);
       });
 
       test('should not parse nothing', function () {
