@@ -66,7 +66,13 @@ export default class JazzScrapeParser implements ClientParser {
       description,
     } = parsedData || { jobLocation: {} };
 
-    if (!url) throw new Error('Invalid job');
+    if (!url) {
+      // tslint:disable-next-line: no-console
+      console.error('Failed to parse job. Data returned:');
+      // tslint:disable-next-line: no-console
+      console.log(data);
+      throw new Error('Failed to parse job');
+    }
 
     const id = getMatch(url, /.+apply\/(.+)\/.+/);
 
