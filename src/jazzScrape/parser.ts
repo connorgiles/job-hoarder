@@ -1,14 +1,18 @@
 import cheerio from 'cheerio';
 
-/**
- * Gets the first match from a string and regex or null
- * @param {String} text text to search from
- * @param {RegEx} pattern regex pattern to match
- */
-const getMatch = (text: string | undefined, pattern: RegExp): string | undefined => {
-  if (!text) return undefined;
-  const match = text.match(pattern);
-  return match && match.length > 1 ? match[1] : undefined;
+import { getMatch } from '../utils';
+
+type JazzScrapeJSONJob = {
+  title: string;
+  url: string;
+  jobLocation: {
+    address: {
+      addressLocality: string;
+      addressRegion: string;
+    };
+  };
+  datePosted: string;
+  description: string;
 };
 
 export default class JazzScrapeParser implements ClientParser {
@@ -48,38 +52,28 @@ export default class JazzScrapeParser implements ClientParser {
   };
 
   /**
-   * Parses job from request result
-   * @param {string} data String of job result
-   * @returns {object} Object of parsed job
+   * Parsed ID from the Jazz URL
+   * @param url URL to parse ID from
    */
-  public parseJob = (data?: any): Job => {
-    if (!data) throw new Error('No job to parse');
+  private parseIdFromUrl = (url: string) => getMatch(url, /.+apply\/(.+)\/.+/);
 
-    const $ = cheerio.load(data);
-    const parsedData = JSON.parse($('script[type="application/ld+json"]').html() as string);
-
+  /**
+   * Parses and normalizes job based on Embedded JSON object
+   * @param parsedData JSON object embedded in HTML
+   * @param $ Cheerio object to extract extra features
+   */
+  private parseJobJSON = (parsedData: JazzScrapeJSONJob, $: CheerioStatic) => {
     const {
       title,
       url = '',
       jobLocation: { address: loc },
       datePosted: pDate,
       description,
-    } = parsedData || { jobLocation: {} };
+    } = parsedData;
 
-    if (!url) {
-      // tslint:disable-next-line: no-console
-      console.error('Failed to parse job. Data returned:');
-      // tslint:disable-next-line: no-console
-      console.log(data);
-      throw new Error('Failed to parse job');
-    }
-
-    const id = getMatch(url, /.+apply\/(.+)\/.+/);
-
+    const id = this.parseIdFromUrl(url);
     const datePosted = new Date(pDate);
-
     const jobLocation = loc ? `${loc.addressLocality}, ${loc.addressRegion}` : undefined;
-
     const department = $('li[title="Department"]').text().trim();
 
     return {
@@ -91,5 +85,44 @@ export default class JazzScrapeParser implements ClientParser {
       department,
       description,
     };
+  };
+
+  /**
+   * Scrapes key fields from HTML
+   * @param $ Cheerio object to extract features from
+   */
+  private parseJobHTML = ($: CheerioStatic): Job => {
+    const title = $('h1:not(.brand-text)').text().trim() as string;
+    const url = $('meta[property="og:url"]').attr('content') as string;
+    const id = this.parseIdFromUrl(url);
+    const jobLocation = $('li[title="Location"]').text().trim();
+    const department = $('li[title="Department"]').text().trim();
+    const description = $('div.description').first().html() as string;
+
+    return {
+      id,
+      url,
+      title,
+      jobLocation,
+      department,
+      description,
+    };
+  };
+
+  /**
+   * Parses job from request result
+   * @param {string} data String of job result
+   * @returns {object} Object of parsed job
+   */
+  public parseJob = (data?: any): Job => {
+    if (!data) throw new Error('No job to parse');
+    const $ = cheerio.load(data);
+
+    // Check to see if the page includes a JSON object
+    const parsedData = JSON.parse($('script[type="application/ld+json"]').html() as string) as JazzScrapeJSONJob;
+    if (parsedData && parsedData.url) return this.parseJobJSON(parsedData, $);
+
+    // Parse HTML as fallback
+    return this.parseJobHTML($);
   };
 }
