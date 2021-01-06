@@ -35,7 +35,7 @@
   "dependencies": {
     "@types/cheerio": "^0.22.18",
     "@types/lodash.unescape": "^4.0.6",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.3",
     "lodash.unescape": "^4.0.1"
   },
